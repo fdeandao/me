@@ -1,0 +1,37 @@
+First (new) Post
+================
+
+finalmente despues de 6 anios de usar blogger empiezo este proceso de migrar a
+una infraestructura mas manejable y amena.
+
+porque me voy?
+--------------
+
+* porque el editor de blogger apesta
+* es un perno poner codigo y/o texto preformateado
+* porque el editor de blogger apesta
+* porque prefiero no escribir mi blog en un editor WYSIWYG que apesta
+* porque prefiero no tener que terminar escribiendo mis posts a mano en HTML
+* porque prefiero usar mi editor preferido para escribir los posts
+* porque nikola esta buenisimo
+* porque restructuredText esta buenisimo
+* porque nikola esta escrito en python que esta buenisimo
+* porque al usar nikola puedo
+
+  + moverme de hosting (esa excusa que siempre listamos y nunca hacemos)
+  + saber que tengo un backup
+  + poder manipular los posts con herramientas convencionales[1]
+  + probar giladas
+  + intentar escribir los posts en N idiomas (para un numero pequenio de N)
+
+ahora empieza un proceso en el que voy a tener una identidad bicefala hasta que
+encuentre la forma de migrar el contenido de blogger a nikola (lindo proyecto
+para agregar a la lista de proyectos abandonados)
+
+porque me demore?
+-----------------
+
+tenia la ilusion de hacer algo similar a nikola como excusa para usar redo [2]
+
+[1] convencionales para nionios
+[2] https://github.com/apenwarr/redo/

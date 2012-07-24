@@ -1,0 +1,520 @@
+<div class="contents alert alert-info pull-right topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-s-nikola-and-what-can-you-do-with-it" id="id4">What's Nikola and what can you do with it?</a></li>
+<li><a class="reference internal" href="#getting-help" id="id5">Getting Help</a></li>
+<li><a class="reference internal" href="#why-static" id="id6">Why Static?</a></li>
+<li><a class="reference internal" href="#features" id="id7">Features</a></li>
+<li><a class="reference internal" href="#installing-nikola" id="id8">Installing Nikola</a></li>
+<li><a class="reference internal" href="#getting-started" id="id9">Getting Started</a></li>
+<li><a class="reference internal" href="#creating-a-blog-post" id="id10">Creating a Blog Post</a></li>
+<li><a class="reference internal" href="#creating-a-page" id="id11">Creating a Page</a></li>
+<li><a class="reference internal" href="#redirections" id="id12">Redirections</a></li>
+<li><a class="reference internal" href="#configuration" id="id13">Configuration</a></li>
+<li><a class="reference internal" href="#adding-files" id="id14">Adding Files</a></li>
+<li><a class="reference internal" href="#customizing-your-site" id="id15">Customizing Your Site</a></li>
+<li><a class="reference internal" href="#getting-more-themes" id="id16">Getting More Themes</a></li>
+<li><a class="reference internal" href="#deployment" id="id17">Deployment</a></li>
+<li><a class="reference internal" href="#comments" id="id18">Comments</a></li>
+<li><a class="reference internal" href="#image-galleries" id="id19">Image Galleries</a></li>
+<li><a class="reference internal" href="#license" id="id20">License</a></li>
+</ul>
+</div>
+<div class="section" id="what-s-nikola-and-what-can-you-do-with-it">
+<h2><a class="toc-backref" href="#id4">What's Nikola and what can you do with it?</a></h2>
+<p>Nikola is a static website and blog generator. The very short explanation is
+that it takes some texts you wrote, and uses them to create a folder full
+of HTML files. If you upload that folder to a server, you will have a
+rather full-featured website, done with little effort.</p>
+<p>It's original goal is to create blogs, but it supports most kind of sites, and
+can be used as a CMS, as long as what you present to the user is your own content
+instead of something the user generates.</p>
+<p>Nikola can do:</p>
+<ul class="simple">
+<li>A blog (<a class="reference external" href="http://lateral.netmanagers.com.ar">example</a>)</li>
+<li>Your company's site</li>
+<li>Your personal site</li>
+<li>A software project's site (<a class="reference external" href="http://nikola.ralsina.com.ar">example</a>)</li>
+<li>A book's site</li>
+</ul>
+<p>Since Nikola-based sites don't run any code on the server, there is no way to process
+user input in forms.</p>
+<p>Nikola can't do:</p>
+<ul class="simple">
+<li>Twitter</li>
+<li>Facebook</li>
+<li>An Issue tracker</li>
+<li>Anything with forms, really (except for <a class="reference internal" href="#comments">comments</a>!)</li>
+</ul>
+<p>Keep in mind that &quot;static&quot; doesn't mean <strong>boring</strong>. You can have animations, slides
+or whatever fancy CSS/HTML5 thingie you like. It only means all that HTML is
+generated already before being uploaded. On the other hand, Nikola sites will
+tend to be content-heavy. What Nikola is good at is at putting what you write
+out there.</p>
+</div>
+<div class="section" id="getting-help">
+<h2><a class="toc-backref" href="#id5">Getting Help</a></h2>
+<ul class="simple">
+<li>Feel free to contact me at <a class="reference external" href="mailto:ralsina&#64;netmanagers.com.ar">ralsina&#64;netmanagers.com.ar</a> for questions about Nikola.</li>
+<li>You can file bugs at <a class="reference external" href="http://code.google.com/p/nikola-generator/issues/list">the issue tracker</a></li>
+<li>You can discuss Nikola at the <a class="reference external" href="http://groups.google.com/group/nikola-discuss">nikola-discuss google group</a></li>
+<li>You can subscribe to <a class="reference external" href="http://nikola.ralsina.com.ar/blog">the Nikola Blog</a></li>
+<li>You can follow <a class="reference external" href="https://twitter.com/#!/nikolagenerator">Nikola on Twitter</a></li>
+</ul>
+</div>
+<div class="section" id="why-static">
+<h2><a class="toc-backref" href="#id6">Why Static?</a></h2>
+<p>Most &quot;modern&quot; websites are <em>dynamic</em> in the sense that the contents of the site
+live in a database, and are converted into presentation-ready HTML only when a
+user wants to see the page. That's great. However, it presents some minor issues
+that static site generators try to solve.</p>
+<p>In a static site, the whole site, every page, <em>everything</em>, is created before
+the first user even sees it and uploaded to the server as a simple folder full
+of HTML files (and images, CSS, etc).</p>
+<p>So, let's see some reasons for using static sites:</p>
+<dl class="docutils">
+<dt>Security</dt>
+<dd><p class="first">Dynamic sites are prone to experience security issues. The solution for that
+is constant vigilance, keeping the software behind the site updated, and
+plain old good luck. The stack of software used to provide a static site,
+like those Nikola generates, is much smaller (Just a webserver).</p>
+<p class="last">A smaller software stack implies less security risk.</p>
+</dd>
+<dt>Obsolescense</dt>
+<dd><p class="first">If you create a site using (for example) Wordpress, what happens when Wordpress
+releases a new version? You have to update your Wordpress. That is not optional,
+because of security and support issues. If I release a new version of Nikola, and
+you don't update, <em>nothing</em> happens. You can continue to use the version you
+have now forever, no problems.</p>
+<p>Also, in the longer term, the very foundations of dynamic sites shift. Can you
+still deploy a blog software based on Django 0.96? What happens when your
+host stops supporting the php version you rely on? And so on.</p>
+<p>You may say those are long term issues, or that they won't matter for years. Well,
+I believe things should work forever, or as close to it as we can make them.
+Nikola's static output and its input files will work as long as you can install
+a Python &gt; 2.5 (soon 3.x) in a Linux, Windows, or Mac and can find a server
+that sends files over HTTP. That's probably 10 or 15 years at least.</p>
+<p class="last">Also, static sites are easily handled by the Internet Archive.</p>
+</dd>
+<dt>Cost and Performance</dt>
+<dd><p class="first">On dynamic sites, every time a reader wants a page, a whole lot of database
+queries are made. Then a whole pile of code chews that data, and HTML is
+produced, which is sent to the user. All that requires CPU and memory.</p>
+<p class="last">On a static site, the highly optimized HTTP server reads the file from disk
+(or, if it's a popular file, from disk cache), and sends it to the user. You could
+probably serve a bazillion (technical term) pageviews from a phone using
+static sites.</p>
+</dd>
+<dt>Lockin</dt>
+<dd><p class="first">On server-side blog platforms, sometimes you can't export your own data, or
+it's in strange formats you can't use in other services. I have switched
+blogging platforms from Advogato to PyCs to two homebrewed systems, to Nikola,
+and have never lost a file, a URL, or a comment. That's because I have <em>always</em>
+had my own data in a format of my choice.</p>
+<p class="last">With Nikola, you own your files, and you can do anything with them.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="features">
+<h2><a class="toc-backref" href="#id7">Features</a></h2>
+<p>Nikola has a very defined featureset: it has every feature I needed for my own sites.
+Hopefully, it will be enough for others, and anyway, I am open to suggestions.</p>
+<p>If you want to create a blog or a site, Nikola provides:</p>
+<ul class="simple">
+<li>Front page (and older posts pages)</li>
+<li>RSS Feeds</li>
+<li>Pages and feeds for each tag you used</li>
+<li>Custom search</li>
+<li>Full yearly archives</li>
+<li>Custom output paths for generated pages</li>
+<li>Easy page template customization</li>
+<li>Static pages (not part of the blog)</li>
+<li>Internationalization support (my own blog is English/Spanish)</li>
+<li>Google sitemap generation</li>
+<li>Custom deployment (if it's a command, you can use it)</li>
+<li>A (very) basic look and feel you can customize, and is even text-mode friendly</li>
+<li>The input format is light markup (<a class="reference external" href="quickstart.html">reStructuredText</a> or
+<a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a>)</li>
+<li>Easy-to-create image galleries</li>
+</ul>
+<p>Also:</p>
+<ul class="simple">
+<li>A preview webserver</li>
+<li>&quot;Live&quot; re-rendering while you edit</li>
+<li>&quot;Smart&quot; builds: only what changed gets rebuilt (usually in 1 or 2 seconds)</li>
+<li>Very easy to extend with minimal Python knowledge.</li>
+</ul>
+</div>
+<div class="section" id="installing-nikola">
+<h2><a class="toc-backref" href="#id8">Installing Nikola</a></h2>
+<p>This is currently lacking on detail. Considering the niche Nikola is aimed at,
+I suspect that's not a problem yet. So, when I say &quot;get&quot;, the specific details
+of how to &quot;get&quot; something for your specific operating system are left to you.</p>
+<p>The short version is: <tt class="docutils literal">pip install <span class="pre">https://github.com/ralsina/nikola</span></tt></p>
+<p>Longer version:</p>
+<ol class="arabic simple">
+<li>Get python, if you don't have it.</li>
+<li>Get <a class="reference external" href="http://python-doit.sf.net">doit</a></li>
+<li>Get <a class="reference external" href="http://docutils.sf.net">docutils</a></li>
+<li>Get <a class="reference external" href="http://makotemplates.org">Mako</a></li>
+<li>Get <a class="reference external" href="http://www.pythonware.com/products/pil/">PIL</a></li>
+<li>Get <a class="reference external" href="http://pygments.org/">Pygments</a></li>
+</ol>
+<p>Any non-prehistorical version of the above should work, but the newer the better.</p>
+<p>Then get Nikola itself (&lt;<a class="reference external" href="http://nikola.ralsina.com.ar/">http://nikola.ralsina.com.ar/</a>&gt;), unzip it, and
+run <tt class="docutils literal">python setup.py install</tt>.</p>
+<p>After that, run <tt class="docutils literal">nikola init sitename</tt> and that will create a folder called
+<tt class="docutils literal">sitename</tt> containing a functional demo site.</p>
+</div>
+<div class="section" id="getting-started">
+<h2><a class="toc-backref" href="#id9">Getting Started</a></h2>
+<p>To create posts and pages in Nikola, you write them in restructured text, a light
+markup that is later converted to HTML (I may add support for textile or other
+markups later). There is a great <a class="reference external" href="quickstart.html">quick tutorial to learn restructured text</a></p>
+<p>First, let's see how you &quot;build&quot; your site. Nikola comes with a minimal site to get you started.</p>
+<p>The tool used to do builds is called <a class="reference external" href="http://python-doit.sf.net">doit</a>, and it rebuilds the
+files that are not up to date, so your site always reflects your latest content. To do our
+first build, just run &quot;doit&quot;:</p>
+<pre class="literal-block">
+$ doit
+Parsing metadata
+.  render_posts:stories/manual.html
+.  render_posts:posts/1.html
+.  render_posts:stories/1.html
+.  render_archive:output/2012/index.html
+.  render_archive:output/archive.html
+.  render_indexes:output/index.html
+.  render_pages:output/posts/welcome-to-nikola.html
+.  render_pages:output/stories/about-nikola.html
+.  render_pages:output/stories/handbook.html
+.  render_rss:output/rss.xml
+.  render_sources:output/stories/about-nikola.txt
+:
+:
+:
+</pre>
+<p>Nikola will print a line for every output file it generates. If we do it again, that
+will be much much shorter:</p>
+<pre class="literal-block">
+$ doit
+Parsing metadata
+.  sitemap
+</pre>
+<p>That is because <a class="reference external" href="http://python-doit.sf.net">doit</a> is smart enough not to generate
+all the pages again, unless you changed something that the page requires. So, if you change
+the text of a post, or its title, that post page, and all index pages where it is mentioned,
+will be recreated. If you change the post page template, then all the post pages will be rebuilt.</p>
+<p>Nikola is a series of doit <em>tasks</em>, and you can see them by doing <tt class="docutils literal">doit list</tt>:</p>
+<pre class="literal-block">
+$ doit list
+Scanning posts  . . done!
+copy_assets        Create tasks to copy the assets of the whole theme chain.
+copy_files         Copy static files into the output folder.
+deploy             Deploy site.
+new_page           Create a new post (interactive).
+new_post           Create a new post (interactive).
+redirect           Generate redirections.
+render_archive     Render the post archives.
+render_galleries   Render image galleries.
+render_indexes     Render 10-post-per-page indexes.
+render_pages       Build final pages from metadata and HTML fragments.
+render_posts       Build HTML fragments from metadata and reSt.
+render_rss         Generate RSS feeds.
+render_site        Render the post archives.
+render_sources     Publish the rst sources because why not?
+render_tags        Render the tag pages.
+serve              Start test server. (Usage: doit serve [--address 127.0.0.1] [--port 8000])
+sitemap            Generate Google sitemap.
+</pre>
+<p>You can make Nikola redo everythig by calling <tt class="docutils literal">doit clean</tt>, you can make it do just a specific
+part of the site using task names, for example <tt class="docutils literal">doit render_pages</tt>, and even individual files like
+<tt class="docutils literal">doit render_indexes:output/index.html</tt></p>
+<p>The <tt class="docutils literal">serve</tt> task is special, in that instead of generating a file it starts a web server so
+you can see the site you are creating:</p>
+<pre class="literal-block">
+$ doit serve
+Parsing metadata
+.  serve
+Serving HTTP on 127.0.0.1 port 8000 ...
+</pre>
+<p>After you do this, you can point your web browser to <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> and you should see
+the sample site. This is useful as a &quot;preview&quot; of your work. You can combine add <tt class="docutils literal">auto</tt> and do
+<tt class="docutils literal">doit auto serve</tt> which makes doit automatically regenerate your pages as needed, and
+it's a live preview!</p>
+<p>By default, the <tt class="docutils literal">serve</tt> task runs the web server on port 8000 on the IP address 127.0.0.1.
+You can pass in an IP address and port number explicity using <tt class="docutils literal"><span class="pre">-a</span> IP_ADDRESS</tt>
+(short version of <tt class="docutils literal"><span class="pre">--address</span></tt>) or <tt class="docutils literal"><span class="pre">-p</span> PORT_NUMBER</tt> (short version of <tt class="docutils literal"><span class="pre">--port</span></tt>)
+Example usage:</p>
+<pre class="literal-block">
+$ doit serve --address 0.0.0.0 --port 8080
+Parsing metadata
+.  serve
+Serving HTTP on 0.0.0.0 port 8080 ...
+</pre>
+<p>The <tt class="docutils literal">deploy</tt> task is discussed in the <a class="reference internal" href="#deployment">Deployment</a> section.</p>
+</div>
+<div class="section" id="creating-a-blog-post">
+<h2><a class="toc-backref" href="#id10">Creating a Blog Post</a></h2>
+<p>A post consists of two files, a metadata file (<tt class="docutils literal"><span class="pre">post-title.meta</span></tt>) and a
+file containing the contents written in  <a class="reference external" href="http://docutils.sf.net">restructured text</a>
+(<tt class="docutils literal"><span class="pre">post-title.txt</span></tt>) or markdown (see the <tt class="docutils literal">INPUT_FORMAT</tt> option in dodo.py).
+The default configuration expects them to be placed in <tt class="docutils literal">posts</tt> but that can be
+changed (see below, the post_pages option)</p>
+<p>You can just create them in <tt class="docutils literal">posts</tt> or use a little helper task provided by Nikola:</p>
+<pre class="literal-block">
+$ doit new_post
+Parsing metadata
+.  new_post
+Creating New Post
+-----------------
+
+Enter title: How to Make Money
+Your post's metadata is at:  posts/how-to-make-money.meta
+Your post's text is at:  posts/how-to-make-money.txt
+</pre>
+<p>The format for the <tt class="docutils literal">.meta</tt> file is as follows:</p>
+<pre class="literal-block">
+How to Make Money
+how-to-make-money
+2012/04/09 13:59
+</pre>
+<p>The first line is the title. The second one is the pagename. Since often titles will have
+characters that look bad on URLs, it's generated as a &quot;clean&quot; version of the title.
+The third line is the post's date, and is set to &quot;now&quot;.</p>
+<p>You can add two more optional lines. A fourth line that is a list of tags
+separated with commas (spaces around the commas are ignored):</p>
+<pre class="literal-block">
+programming, python, fame, fortune
+</pre>
+<p>And a fifth line that's a URL for an original source of the post.</p>
+<p>If you are writing a multilingual site, you can also create a per-language
+metadata file. This one can have two lines:</p>
+<ol class="arabic simple">
+<li>The translated title for the post or page</li>
+<li>A translated version of the pagename</li>
+</ol>
+<p>You can edit these files with your favourite text editor, and once you are happy
+with the contents, generate the pages as explained in <a class="reference internal" href="#getting-started">Getting Started</a></p>
+<p>The post page is generated using the <tt class="docutils literal">post.tmpl</tt> template, which you can use
+to customize the output.</p>
+<p>The place where the post will be placed by <tt class="docutils literal">new_post</tt> is based on the <tt class="docutils literal">post_pages</tt>
+configuration option:</p>
+<pre class="literal-block">
+# post_pages contains (wildcard, destination, template, use_in_feed) tuples.
+#
+# The wildcard is used to generate a list of reSt source files (whatever/thing.txt)
+# That fragment must have an associated metadata file (whatever/thing.meta),
+# and opcionally translated files (example for spanish, with code &quot;es&quot;):
+#     whatever/thing.txt.es and whatever/thing.meta.es
+#
+# From those files, a set of HTML fragment files will be generated:
+# whatever/thing.html (and maybe whatever/thing.html.es)
+#
+# These files are combinated with the template to produce rendered
+# pages, which will be placed at
+# output / TRANSLATIONS[lang] / destination / pagename.html
+#
+# where &quot;pagename&quot; is specified in the metadata file.
+#
+# if use_in_feed is True, then those posts will be added to the site's
+# rss feeds.
+#
+post_pages = (
+    (&quot;posts/*.txt&quot;, &quot;posts&quot;, &quot;post.tmpl&quot;, True),
+    (&quot;stories/*.txt&quot;, &quot;stories&quot;, &quot;story.tmpl&quot;, False),
+)
+</pre>
+<p>It will use the first location that has the last parameter set to True, or the last
+one in the list if all of them have it set to False.</p>
+</div>
+<div class="section" id="creating-a-page">
+<h2><a class="toc-backref" href="#id11">Creating a Page</a></h2>
+<p>Pages are the same as posts, except that:</p>
+<ul class="simple">
+<li>They are not added to the front page</li>
+<li>They don't appear on the RSS feed</li>
+<li>They use the <tt class="docutils literal">story.tmpl</tt> template instead of <tt class="docutils literal">post.tmpl</tt> by default</li>
+</ul>
+<p>The default configuration expects the page's metadata and text files to be on the
+<tt class="docutils literal">stories</tt> folder, but that can be changed (see post_pages option above).</p>
+<p>You can create the page's files manually or use the helper <tt class="docutils literal">new_page</tt> that works exactly like
+the <tt class="docutils literal">new_post</tt> described above, except it will place the files in the folder that
+has <tt class="docutils literal">use_in_feed</tt> set to False.</p>
+</div>
+<div class="section" id="redirections">
+<h2><a class="toc-backref" href="#id12">Redirections</a></h2>
+<p>If you need a page to be available in more than one place, you can define redirections
+in your <tt class="docutils literal">dodo.py</tt>:</p>
+<pre class="literal-block">
+# A list of redirection tuples, [(&quot;foo/from.html&quot;, &quot;/bar/to.html&quot;)].
+#
+# A HTML file will be created in output/foo/from.html that redirects
+# to the &quot;/bar/to.html&quot; URL. notice that the &quot;from&quot; side MUST be a
+# relative URL.
+#
+# If you don't need any of these, just set to []
+
+REDIRECTIONS = [(&quot;index.html&quot;, &quot;/weblog/index.html&quot;)]
+</pre>
+<p>It's better if you can do these using your web server's configuration, but if
+you can't, this will work.</p>
+</div>
+<div class="section" id="configuration">
+<h2><a class="toc-backref" href="#id13">Configuration</a></h2>
+<p>The configuration file is called <tt class="docutils literal">dodo.py</tt> and can be used to customize a lot of
+what Nikola does. Its syntax is python, but if you don't know the languaje, it
+still should not be terribly hard to grasp.</p>
+<p>The default <tt class="docutils literal">dodo.py</tt> you get with Nikola should be fairly complete, and is quite
+commented, but just in case, here is a full,
+<a class="reference external" href="sampleconfig.html">customized example configuration</a> (the one I use for
+<a class="reference external" href="http://lateral.netmanagers.com.ar">my site</a>)</p>
+</div>
+<div class="section" id="adding-files">
+<h2><a class="toc-backref" href="#id14">Adding Files</a></h2>
+<p>Any files you want to be in <tt class="docutils literal">output/</tt> but are not generated by Nikola (for example,
+<tt class="docutils literal">favicon.ico</tt>, just put it in <tt class="docutils literal">files/</tt>. Everything there is copied into
+<tt class="docutils literal">output</tt> by the <tt class="docutils literal">copy_files</tt> task. Remember that you can't have files that collide
+with files Nikola generates (it will give an error).</p>
+<div class="admonition-important admonition">
+<p class="first admonition-title">Important</p>
+<p class="last">Don't put any files manually in <tt class="docutils literal">output/</tt>. Ever. Really. Maybe someday Nikola
+will just wipe <tt class="docutils literal">output/</tt> and then you will be sorry. So, please don't do that.</p>
+</div>
+</div>
+<div class="section" id="customizing-your-site">
+<h2><a class="toc-backref" href="#id15">Customizing Your Site</a></h2>
+<p>There are lots of things you can do to persoalize your website, but let's see the easy ones!</p>
+<dl class="docutils">
+<dt>Basics</dt>
+<dd><p class="first">You can assume this needs to be changed:</p>
+<pre class="last literal-block">
+# Data about this site
+BLOG_TITLE = &quot;Demo Site&quot;
+BLOG_URL = &quot;http://nikola-generator.googlecode.com&quot;
+BLOG_EMAIL = &quot;joe&#64;demo.site&quot;
+BLOG_DESCRIPTION = &quot;This is a demo site for Nikola.&quot;
+</pre>
+</dd>
+<dt>CSS tweaking</dt>
+<dd><p class="first">The default configuration includes a file, <tt class="docutils literal">themes/default/assets/css/custom.css</tt>
+which is empty. Put your CSS there, for minimal disruption of the provided CSS files.</p>
+<p class="last">If you feel tempted to touch other files in assets, you probably will be better off
+with a <a class="reference external" href="theming.html">custom theme</a>.</p>
+</dd>
+<dt>Template tweaking</dt>
+<dd>If you really want to change the pages radically, you will want to do a
+<a class="reference external" href="theming.html">custom theme</a>.</dd>
+<dt>Sidebar</dt>
+<dd><p class="first"><tt class="docutils literal">LICENSE</tt> is a HTML snippet for things like a CC badge, or whatever you prefer.</p>
+<p>The 'sidebar_links' option lets you define what links go in the right-hand
+sidebar, so you can link to important pages, or to other sites.</p>
+<p class="last">The <tt class="docutils literal">SEARCH_FORM</tt> option contains the HTML code for a search form based on
+duckduckgo.com which should always work, but feel free to change it to
+something else.</p>
+</dd>
+<dt>Footer</dt>
+<dd><tt class="docutils literal">CONTENT_FOOTER</tt> is displayed, small at the bottom of all pages, I use it for
+the copyright notice.</dd>
+<dt>Analytics</dt>
+<dd>This is probably a misleading name, but the <tt class="docutils literal">ANALYTICS</tt> option lets you define
+a HTML snippet that will be added at the bottom of body. The main usage is
+a Google analytics snippet or something similar, but you can really put anything
+there.</dd>
+</dl>
+</div>
+<div class="section" id="getting-more-themes">
+<h2><a class="toc-backref" href="#id16">Getting More Themes</a></h2>
+<p>There are not so many themes for Nikola. On occasion, I port something I like, and make
+it available for download. Nikola has a builtin theme download/install mechanism, its
+<tt class="docutils literal">install_theme</tt> task:</p>
+<pre class="literal-block">
+$ doit install_theme -l
+Scanning posts  . . done!
+.  install_theme
+Themes:
+-------
+blogtxt
+readable
+
+$ doit install_theme -n blogtxt
+Scanning posts  . . done!
+.  install_theme
+Downloading: http://nikola.ralsina.com.ar/themes/blogtxt.zip
+Extracting: blogtxt into themes
+</pre>
+<p>And there you are, you now have themes/blogtxt installed. It's very rudimentary, but it
+should work in most cases.</p>
+<p>If you create a nice theme, please share it! You can post about it on
+<a class="reference external" href="http://groups.google.com/group/nikola-discuss">the nikola forum</a> and I will
+make it available for download.</p>
+</div>
+<div class="section" id="deployment">
+<h2><a class="toc-backref" href="#id17">Deployment</a></h2>
+<p>Nikola doesn't really have a concept of deployment. However, if you can specify your
+deployment procedure as a series of commands, you can put them in the <tt class="docutils literal">DEPLOY_COMMANDS</tt>
+option, and run them with <tt class="docutils literal">doit deploy</tt>.</p>
+<p>One caveat is that if any command has a % in it, you should double them.</p>
+<p>Here is an example, from my own site's deployment script:</p>
+<pre class="literal-block">
+DEPLOY_COMMANDS = [
+    'rsync -rav --delete output/* ralsina&#64;lateral.netmanagers.com.ar:/srv/www/lateral',
+    'rdiff-backup output ~/bartleblog-backup',
+    &quot;links -dump 'http://www.twingly.com/ping2?url=lateral.netmanagers.com.ar'&quot;,
+    'rsync -rav ~/bartleblog-backup/* ralsina&#64;netmanagers.com.ar:bartleblog-backup',
+]
+</pre>
+<p>Other interesting ideas are using
+<a class="reference external" href="http://toroid.org/ams/git-website-howto">git as a deployment mechanism</a> (or any other VCS
+for that matter), using <a class="reference external" href="http://lftp.yar.ru/">lftp mirror</a> or unison, or dropbox, or
+Ubuntu One. Any way you can think of to copy files from one place to another is good enough.</p>
+</div>
+<div class="section" id="comments">
+<h2><a class="toc-backref" href="#id18">Comments</a></h2>
+<p>While Nikola creates static sites, there is a minimum level of user interaction you
+are probably expecting: comments.</p>
+<p>The default templates contain support for <a class="reference external" href="http://disqus.com">Disqus</a>. All you have
+to do is register a forum, put its short name in the <tt class="docutils literal">DISQUS_FORUM</tt> option.</p>
+<p>Disqus is a good option because:</p>
+<ol class="arabic simple">
+<li>It doesn't require any server-side software on your site</li>
+<li>They offer you a way to export your comments, so you can take
+them with you if you need to.</li>
+<li>It's free.</li>
+<li>It's damn nice.</li>
+</ol>
+<div class="admonition-important admonition">
+<p class="first admonition-title">Important</p>
+<p class="last">You will want to edit post.tmpl and delete the line that says disqus_developer.</p>
+</div>
+</div>
+<div class="section" id="image-galleries">
+<h2><a class="toc-backref" href="#id19">Image Galleries</a></h2>
+<p>To create an image gallery, all you have to do is add a folder inside <tt class="docutils literal">galleries</tt>,
+and put images there. Nikola will take care of creating thumbnails, index page, etc.</p>
+<p>If you click on images on a gallery, you should see a bigger image, thanks to
+the excellent <a class="reference external" href="http://www.jacklmoore.com/colorbox">colorbox</a></p>
+<p>The gallery pages are generated using the <tt class="docutils literal">gallery.tmpl</tt> template, and you can
+customize it there (you could switch to another lightbox instead of colorbox, change
+its settings, change the layout, etc.).</p>
+<p>The <tt class="docutils literal">dodo.py</tt> options affecting gallery pages are these:</p>
+<pre class="literal-block">
+# Galleries are folders in galleries/
+# Final location of galleries will be output / GALLERY_PATH / gallery_name
+GALLERY_PATH = &quot;galleries&quot;
+THUMBNAIL_SIZE = 180
+</pre>
+<p>If you  add a file in <tt class="docutils literal">galleries/gallery_name/index.txt</tt> its contents will be
+converted to HTML and inserted above the images in the gallery page.</p>
+<p>Here is a <a class="reference external" href="/galleries/demo">demo gallery</a> of historic, public domain Nikola
+Tesla pictures taken from <a class="reference external" href="http://kerryr.net/pioneers/gallery/tesla.htm">this site</a>.</p>
+</div>
+<div class="section" id="license">
+<h2><a class="toc-backref" href="#id20">License</a></h2>
+<p>Nikola is released under the <a class="reference external" href="http://www.gnu.org/licenses/gpl-3.0.html">GPL version 3</a> which
+is a free software license. Some components shipped along with Nikola, or required by it are
+released under other licenses.</p>
+<p>If you are not familiar with free software licensing: In general, you should be able to
+do pretty much anything you want, unless you modify Nikola. If you modify it, and share
+it with someone else, that someone else should get all your modifications under the same
+license you got it.</p>
+</div>
