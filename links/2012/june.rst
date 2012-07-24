@@ -1,3 +1,11 @@
+http://www.confreaks.com/videos/759-rubymidwest2011-keynote-architecture-the-lost-years
+http://www.infoq.com/presentations/What-Sucks-about-Clojure-and-Why-You-ll-Love-It-Anyway
+http://www.youtube.com/watch?v=MShbP3OpASA
+http://blog.hooktheory.com/2012/06/06/i-analyzed-the-chords-of-1300-popular-songs-for-patterns-this-is-what-i-found/
+http://www.javalimit.com/2011/05/erlang-is-not-a-concurrent-functional-programming-language.html
+http://lists.canonical.org/pipermail/kragen-tol/2012-June/000958.html
+http://www.infoq.com/presentations/Erlang-The-Road-Movie
+http://www.youtube.com/watch?v=KdnGPQaICjk
 http://tools.ietf.org/html/draft-pbryan-http-json-resource-02
 http://www.lhup.edu/~DSIMANEK/cargocul.htm
 http://norvig.com/lispy2.html

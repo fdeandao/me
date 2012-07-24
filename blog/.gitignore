@@ -2,7 +2,9 @@
 *.pyc
 cache
 tmp
+.doit.db
 files
 galleries
 tmp
 README.txt
+output
