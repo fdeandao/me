@@ -1,0 +1,166 @@
+
+<div class="document">
+un amigo me paso esta nota:<br/><br/><a class="reference external" href="http://www.comercioyjusticia.com.ar/2011/08/09/crea-software-sin-programar-y-en-la-mitad-de-tiempo/">http://www.comercioyjusticia.com.ar/2011/08/09/crea-software-sin-programar-y-en-la-mitad-de-tiempo/</a><br/><br/>
+es de una herramienta que ese amigo ya me había contado pero que nunca pude
+conseguir información concreta como ejemplos concretos.<br/><br/>
+leyendo el articulo se me prendió el detector de buzzwords muchas veces así
+que como me siento quejoso hoy voy a hacer un análisis del mismo.<br/><br/>
+si quieren sacar sus cartones de buzzword bingo :D<br/><br/><a href="http://en.wikipedia.org/wiki/Buzzword_bingo">http://en.wikipedia.org/wiki/Buzzword_bingo</a><br/><div class="section" id="disclaimer">
+<h1>
+disclaimer</h1>
+me encantan las tecnologías nuevas, innovadoras, que prueban cosas distintas.<br/><br/>
+no creo que el desarrollo de software este en su punto máximo, pero a veces
+algunas tecnológicas nuevas vienen con mucho discurso de relaciones publicas y
+pocos ejemplos concretos.<br/><br/>
+si bien al final explica que ya tiene implementaciones concretas me voy a centrar
+en la promesa de "hacer software sin programar" que predica el titulo.<br/><br/>
+hago muchas preguntas y algunas cosas que digo son muy genéricas o pueden ser
+falacias, solicito a los guardianes de la argumentación que sean cariñosos con migo :D</div>
+<div class="section" id="empecemos">
+<h1>
+empecemos</h1>
+<blockquote>
+Un nuevo paradigma revoluciona la tradicional forma de desarrollar programas.</blockquote>
+<img alt="http://images3.wikia.nocookie.net/__cb20090909220405/en.futurama/images/thumb/8/8b/ThatGuy.jpg/727px-ThatGuy.jpg" height="258" src="http://images3.wikia.nocookie.net/__cb20090909220405/en.futurama/images/thumb/8/8b/ThatGuy.jpg/727px-ThatGuy.jpg" width="320"/><br/><br/>
+"that guy" en futurama ya lo dijo<br/><blockquote>
+"I'll handle this, Fry. You get back to the farm, shift some paradigms, revolutionize outside the box"</blockquote>
+luego<br/><blockquote>
+OMP es una calculadora que “modela” implementando operaciones.</blockquote>
+calculadora podría ser sinónimo de interprete, "modela" podría ser sinónimo de
+interpreta, implementando operaciones podría ser sinónimo de método/función
+etc. (muchas asunciones por supuesto)<br/><br/>
+pareciera que usara sinónimos para que no parezca algún lenguaje de programación
+o herramienta 4GL tradicional (<a class="reference external" href="http://en.wikipedia.org/wiki/Fourth-generation_programming_language">http://en.wikipedia.org/wiki/Fourth-generation_programming_language</a>)<br/><blockquote>
+Resuelve por medio de metamodelos la solución con base en los requerimientos del cliente.</blockquote>
+mmm meta (<a class="reference external" href="http://en.wikipedia.org/wiki/Metacrap">http://en.wikipedia.org/wiki/Metacrap</a>)<br/><br/>
+osea que son modelos sobre los modelos, simplemente un modelo de indireccion mas?<br/><blockquote>
+A famous aphorism of David Wheeler goes: "All problems in computer science can
+be solved by another level of indirection"; this is often deliberately
+mis-quoted with "abstraction layer" substituted for "level of indirection".
+Kevlin Henney's corollary to this is, "...except for the problem of too many
+layers of indirection."</blockquote>
+</div>
+<div class="section" id="sigamos">
+<h1>
+sigamos</h1>
+<blockquote>
+Consultores Pyme se asoció a la firma Onirus, de Tandil,</blockquote>
+un poco de publicidad gratis<br/><blockquote>
+para promover el uso del Paradigma Semántico de Modelado de Software,</blockquote>
+me encanto la conjunción de paradigma y semántico para hacerlo parecer mas cool.<br/><br/>
+se referirá simplemente a programación declarativa con palabras mas difíciles?<br/><br/><a class="reference external" href="http://en.wikipedia.org/wiki/Declarative_programming">http://en.wikipedia.org/wiki/Declarative_programming</a><br/><blockquote>
+una solución que revolucionará el concepto de construcción de software
+en las empresas que programan con tecnologías tradicionales.</blockquote>
+<br/><div class="separator" style="clear: both; text-align: center;">
+<a href="http://imgs.xkcd.com/comics/wikipedian_protester.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="173" src="http://imgs.xkcd.com/comics/wikipedian_protester.png" width="320"/></a></div>
+<br/><blockquote>
+Se trata de una herramienta innovadora creada por la ingeniera en sistemas Nadia
+Huebra y su equipo, fundadores de  Onirus, una empresa  con presencia
+en Buenos Aires y Mendoza.</blockquote>
+mas publicidad<br/><blockquote>
+Sobre la base de un paradigma conceptual denominado MORE®</blockquote>
+antes era un paradigma semántico, ahora es conceptual.<br/><blockquote>
+(propiedad intelectual de Nadia Huebra), se creó una herramienta
+denominada OMP® (Onirus Modeling Platform) capaz de modelar software
+sin programar, es decir sin generar código procedural, tal como se
+conoce.</blockquote>
+desde cuando programas "es decir" sin generar código procedural?<br/><br/>
+podes generar DSLs, programación declarativa, interpretarlo directamente etc.<br/><br/>
+prolog define hechos y pregunta cosas y sin embargo es un lenguaje de programación y es considerado programar.<br/><blockquote>
+“Funciona como una calculadora de procesos funcionales. OMP implementa
+axiomas, operaciones y argumentos MORE para resolver mediante
+metamodelos la creación del software. Esto conlleva la mitad del tiempo
+que se tarda en desarrollar un programa común”, explicó su creadora,
+quien patentó la idea.</blockquote>
+los axiomas no se implementan se definen (creo :D)<br/><br/>
+se refiere a axiomas como un "fact" en prolog o en un sistema experto?<br/><br/><a class="reference external" href="http://en.wikipedia.org/wiki/Expert_system">http://en.wikipedia.org/wiki/Expert_system</a><br/><blockquote>
+Para la creación del software, el profesional responsable de la captura
+del requerimiento (equiparado al programador en la tecnología
+tradicional)</blockquote>
+osea que cambiaste el nombre del programador-analista.<br/><blockquote>
+imparte -en lenguaje natural-, una especificación
+funcional a partir de la cual se modela el problema funcional.</blockquote>
+si se imparte en languaje natural y no un lenguaje formal, como resuelve el requerimiento:<br/><br/>
+"cuando el valor es entre 1 y 5..."<br/><br/>
+1 y 5 inclusivo? exclusivo?<br/><br/>
+si eso se tiene que especificar o esta formalizado que significa entonces no es
+lenguaje natural, es simplemente un lenguaje de muy alto nivel.<br/><br/>
+por ejemplo, esto es lisp:<br/><br/><pre class="literal-block">(loop for i from 1 to 10 sum i)</pre>
+<pre class="literal-block"/>
+parece lenguaje natural, salvo que si lo cambio un poco ya no anda, entonces
+es un lenguaje de muy alto nivel nomas.<br/><br/>
+otro ejemplo (entre tantos), cucumber: <a class="reference external" href="http://cukes.info/">http://cukes.info/</a>
+aunque parezca ingles es ruby, o un interprete sobre ruby<br/><blockquote>
+La calculadora cuenta con una cantidad definida de modelos y N cantidad
+de ensambladores, que combinan los modelos con base en las
+especificaciones de los requerimientos solicitados por el cliente.</blockquote>
+cuenta con una cantidad definida de modelos, osea que serian como bibliotecas o
+patrones prediseniados?<br/><br/>
+ensambladores como linkers o como glue code entre los modelos?
+osea que son como bibliotecas?<br/><blockquote>
+Luego, los testers funcionales validan las especificaciones del
+software resultante. “Aquí una de las máximas ventajas es que, no
+habiendo errores en la calculadora, no hay posibilidad de error de
+programa, sólo pueden surgir ajustes funcionales”, añadió Huebra.</blockquote>
+osea que los testers hacen de compiladores?<br/><br/>
+si no hay errores en la calculadora es como decir que no haya errores en el interprete de python.<br/><br/>
+si no hay posibilidad de error en el programa, no importa lo que escriba va a andar bien? para que lo escribo?<br/><br/>
+un quote de un tal Babbage<br/><blockquote>
+On two occasions I have been asked, 'Pray, Mr. Babbage, if you put into
+the machine wrong figures, will the right answers come out?' I am not
+able rightly to apprehend the kind of confusion of ideas that could
+provoke such a question.</blockquote>
+<br/><blockquote>
+Read more:
+<a class="reference external" href="http://www.brainyquote.com/quotes/quotes/c/charlesbab141832.html#ixzz1hfJ779dD">http://www.brainyquote.com/quotes/quotes/c/charlesbab141832.html#ixzz1hfJ779dD</a></blockquote>
+por "ajustes funcionales" se refiere a debugging/bug fixing?<br/><blockquote>
+“Es un cambio absoluto de paradigma, se trata de un metalenguaje de máximo
+nivel de abstracción de la semántica del requerimiento funcional”, explicó
+Huebra, segura de que éste modelo revolucionará el tradicional método de
+desarrollar software.</blockquote>
+otra vez revolucionando los paradigmas<br/><br/>
+porque metalenguaje y no lenguaje? osea que si es un lenguaje de programacion?<br/><br/>
+máximo nivel de abstracción? osea que no hay nada mas abstracto? no puedo decir
+"resolve este problema"?<br/><br/>
+empiezo a detectar abuso de vocabulario.</div>
+<div class="section" id="ventajas">
+<h1>
+ventajas</h1>
+<blockquote>
+De lo cambios: OMP incorpora el cambio como variable endógena, es
+decir, los sistemas son evolutivos y pueden ser oportunos.</blockquote>
+ah? sistemas evolutivos? como el software actual basado en metodologías ágiles?
+o programación evolutiva/genética?<br/><br/><a class="reference external" href="http://en.wikipedia.org/wiki/Evolutionary_programming">http://en.wikipedia.org/wiki/Evolutionary_programming</a><br/><br/>
+menos mal que no son inoportunos :P<br/><blockquote>
+Las modificaciones se pueden realizar en los momentos que se necesiten,
+adecuando los tiempos a la madurez conceptual de los usuarios del
+negocio; no se requiere compilación.</blockquote>
+no se requiere compilación, como un lenguaje dinámico digamos.<br/><blockquote>
+Del conocimiento: esta tecnología hace portable el conocimiento del
+negocio en formato dato. Los modelos de negocios (que serían los
+módulos si los comparamos con el software tradicionales) son
+independientes y capaces de funcionar juntos o separados.</blockquote>
+conocimiento en formato dato, me suena a homoiconicidad, algo que lisp hace bastante bien desde digamos... 1958<br/><br/><a class="reference external" href="http://en.wikipedia.org/wiki/Homoiconicity">http://en.wikipedia.org/wiki/Homoiconicity</a><br/><br/>
+ya que estamos, portable a que otra plataforma?<br/><blockquote>
+Del tiempo: en relación con la programación de un software tradicional,
+la modelación permite reducir los tiempos de un proyecto en 50%.</blockquote>
+citation needed, que estudio de campo muestra estos resultados? paper?<br/><blockquote>
+Del requerimiento: Huebra asegura que MORE permite captar con alta
+precisión el requerimiento del cliente, y encarar la solución a su
+“exacta medida”.</blockquote>
+como nos prometieron los de UML con la especificación de casos de uso?<br/><blockquote>
+Múltiple Son grandes empresas nacionales las que confían en Onirus.
+Enarsa, para sus 65 plantas, utiliza un sistema para el procesamiento
+de datos de despacho térmico. Hidroeléctrica Piedra del Águila,
+Centrales Térmicas Mendoza, Central Puerto  y La Plata Cogeneración lo
+emplean para facturación de energía eléctrica del mercado a término.
+“Es aplicable a cualquier tipo de industria; algunas pymes usan
+sistemas con esta tecnología para administración contable, soluciones
+agrícolas, trazabilidad vitivinícolas, sanidad equina, entre otros”,
+agregó la especialista.</blockquote>
+osea que es un lenguaje turing completo <a class="reference external" href="http://en.wikipedia.org/wiki/Turing_completeness">http://en.wikipedia.org/wiki/Turing_completeness</a><br/><br/>
+que bueno que tenga casos de éxito, osea que no es vaporware al menos, pero
+el lenguaje del articulo le resta bastante credibilidad.<br/><br/>
+veremos que sale de esto, espero ser probado incorrecto, a nadie le gusta hacer ABMs :)</div>
+</div>
+<div style="clear: both;"/>

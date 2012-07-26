@@ -1,0 +1,9 @@
+
+<h3>Where is Python used?</h3><ul><li>The Google build system is written in python.  All of Google's  corporate code is checked into a repository and the dependency and  building of this code is managed by python.  Greg mentioned that to  create code.google.com took about 100 lines of python code.  But since  it has so many dependencies, the build system generated a 3 megabyte  makefile for it!</li>
+<li>Packaging.  Google has an internal packaging format like RPM.  These packages are created using python.</li>
+<li>Binary Data Pusher.  This is the area where Alex Martelli is working, on optimizing pushing bits between thousands of servers</li>
+<li>Production servers.  All monitoring, restarting and data collection functionality is done with python</li>
+<li>Reporting.  Logs are analyzed and reports are generated using Python.</li>
+<li>A few services including code.google.com and google groups.   Most other front ends are in C++ (google.com) and Java (gmail).  All web  services are built on top of a highly optimizing http server wrapped  with SWIG.</li>
+</ul><a href="http://panela.blog-city.com/python_at_google_greg_stein__sdforum.htm">fuente </a>
+<div style="clear: both;"/>

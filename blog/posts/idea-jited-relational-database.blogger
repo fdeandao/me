@@ -1,0 +1,6 @@
+
+si existen Just In Time compilers para lenguajes porque no hacer lo mismo para bases de datos relacionales?<br/><br/>
+la idea es que yo mando inserts de algo simil a json y la base de datos en un principio las mete en una bolsa de objetos como mongodb, pero a medida que los objetos van entrando busca patrones de atributos/tipos/relaciones y empieza a construir el schema para esos valores y los mete ahi.<br/><br/>
+la base de datos soporta sql pero duck typed, no digo el from, busca los objetos que matchean con la descripcion del where, quizas le puedo tirar hints para habilitar optimizaciones.<br/><br/>
+alguien lo hace por mi?
+<div style="clear: both;"/>

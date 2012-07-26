@@ -1,0 +1,4 @@
+
+"aquí yace otro gil que por N-esima vez fue mordido por un oneliner en el shell intentando iterar por strings con espacios"<br/><br/>
+mas abajo donde las plantas con el tiempo tapan la inscripción diría:<br/><br/><pre>IFS=$'\n';for line in $(cat archivo.txt);do echo $(printf '%q' $line); done</pre>
+<div style="clear: both;"/>

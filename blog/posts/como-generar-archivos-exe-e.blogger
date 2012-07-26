@@ -1,0 +1,80 @@
+
+<div class="document" id="como-generar-archivos-exe-e-instaladores-para-una-aplicacion-python"><h1 class="title">Como generar archivos .exe e instaladores para una aplicación python</h1><br/><p>Este documento describe los pasos necesarios para crear un archivo ejecutable<br/>
+de una aplicación python y como generar un instalador y una versión portable<br/>
+para dicha instalación.</p><p>Este documento asume que la aplicación se basa en GTK pero debería funcionar<br/>
+con menores cambios en otros toolkits.</p><div class="section" id="porque-un-instalador"><h1>porque un instalador</h1><ul class="simple"><li>se requiere instalar muchos componentes a mano por el usuario final para una sola aplicación</li>
+<li>muchos instaladores pequeños</li>
+<li>difíciles de encontrar</li>
+<li>difícil encontrar las versiones exactas que funcionan en conjunto</li>
+<li>requiere instalarlos en un orden definido</li>
+<li>rezar</li>
+<li>algunas veces incluso haciendo todo bien puede no funcionar</li>
+<li>fácil de automatizar y documentar para replicar con cada nueva versión</li>
+<li>liberar al usuario final de los problemas para poder usar la aplicación</li>
+</ul></div><div class="section" id="componentes-requeridos"><h1>componentes requeridos</h1><ul class="simple"><li>python</li>
+<li>todas las librerías utilizadas por la aplicación</li>
+<li>py2exe</li>
+<li>nsis</li>
+<li>tiempo y suerte</li>
+</ul></div><div class="section" id="instaladores"><h1>instaladores</h1><p>aquí se listan los links a los instaladores de todos los componentes usados en el ejemplo.</p><ul class="simple"><li><a class="reference external" href="http://python.org/ftp/python/2.6.6/python-2.6.6.msi">http://python.org/ftp/python/2.6.6/python-2.6.6.msi</a></li>
+<li><a class="reference external" href="http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.6.exe/download">http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.6.exe/download</a></li>
+<li><a class="reference external" href="http://ftp.gnome.org/pub/GNOME/binaries/win32/pycairo/1.8/pycairo-1.8.6.win32-py2.6.exe">http://ftp.gnome.org/pub/GNOME/binaries/win32/pycairo/1.8/pycairo-1.8.6.win32-py2.6.exe</a></li>
+<li><a class="reference external" href="http://ftp.gnome.org/pub/GNOME/binaries/win32/pygobject/2.20/pygobject-2.20.0.win32-py2.6.exe">http://ftp.gnome.org/pub/GNOME/binaries/win32/pygobject/2.20/pygobject-2.20.0.win32-py2.6.exe</a></li>
+<li><a class="reference external" href="http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.16/pygtk-2.16.0+glade.win32-py2.6.exe">http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.16/pygtk-2.16.0+glade.win32-py2.6.exe</a></li>
+<li><a class="reference external" href="http://sourceforge.net/projects/pywin32/files/pywin32/Build%20214/pywin32-214.win32-py2.6.exe/download">http://sourceforge.net/projects/pywin32/files/pywin32/Build%20214/pywin32-214.win32-py2.6.exe/download</a></li>
+<li><a class="reference external" href="http://sourceforge.net/projects/gtk-win/files/GTK%2B%20Runtime%20Environment/GTK%2B%202.22/gtk2-runtime-2.22.0-2010-10-01-ash.exe/download">http://sourceforge.net/projects/gtk-win/files/GTK%2B%20Runtime%20Environment/GTK%2B%202.22/gtk2-runtime-2.22.0-2010-10-01-ash.exe/download</a></li>
+<li><a class="reference external" href="http://sourceforge.net/projects/gtk-win/files/GTK%2B%20Themes%20Package/2009-09-07/gtk2-themes-2009-09-07-ash.exe/download">http://sourceforge.net/projects/gtk-win/files/GTK%2B%20Themes%20Package/2009-09-07/gtk2-themes-2009-09-07-ash.exe/download</a></li>
+<li><a class="reference external" href="http://prdownloads.sourceforge.net/nsis/nsis-2.46-setup.exe?download">http://prdownloads.sourceforge.net/nsis/nsis-2.46-setup.exe?download</a></li>
+</ul></div><div class="section" id="orden-de-instalacion"><h1>orden de instalación</h1><p>algunos instaladores son independientes de otros, pero para evitar posibles problemas recomiendo la instalación en el siguiente orden.</p><ul class="simple"><li>python</li>
+<li>gtk-runtime</li>
+<li>gtk2-themes</li>
+<li>nsis</li>
+<li>pygobject</li>
+<li>pycairo</li>
+<li>pygtk</li>
+<li>pywin32</li>
+<li>py2exe</li>
+</ul></div><div class="section" id="tareas-extra"><h1>tareas extra</h1><ul class="simple"><li>setear la variable de entorno PATH para agregar el path a la instalación de python</li>
+<li>probar la instalación con una pequeña aplicación gtk</li>
+</ul><pre class="literal-block">&gt;&gt;&gt; import gtk
+&gt;&gt;&gt; w = gtk.Window()
+&gt;&gt;&gt; l = gtk.Label("asd")
+&gt;&gt;&gt; w.add(l)
+&gt;&gt;&gt; w.show_all()
+&gt;&gt;&gt; gtk.main()
+</pre></div><div class="section" id="prueba-con-una-aplicacion-de-ejemplo"><h1>prueba con una aplicación de ejemplo</h1><p>Cree un repositorio con una aplicación de ejemplo para probar los pasos, la aplicación esta disponible en github acá:</p><p><a class="reference external" href="http://github.com/marianoguerra/PyGtkOnWindows">http://github.com/marianoguerra/PyGtkOnWindows</a></p><div class="section" id="pasos"><h2>pasos</h2><ul class="simple"><li>descargarla</li>
+<li>descomprimirla</li>
+<li>ejecutar python setup.py py2exe</li>
+<li>copiar los directorios lib y share de la instalación del runtime de gtk (no de la instalación de pygtk) al directorio dist</li>
+<li>copiar todos los archivos del directorio dll al directorio dist</li>
+<li>borrar los locales y temas no usados de los directorios copiados a dist (yo solo dejo el theme MS-Windows)</li>
+<li>crear la siguiente estructura de directorios dentro de dist: etc/gtk-2.0</li>
+<li>dentro de ese directorio crear un archivo llamado gtkrc con una linea como la siguiente dentro:<ul><li>gtk-theme-name = "MS-Windows"</li>
+<li>podes cambiar el tema usado manteniendo otro theme dentro de share/themes y cambiando el nombre del theme en gtkrc</li>
+</ul></li>
+<li>right click en ejemplo.nsi y seleccionar "Compile NSIS Script"</li>
+<li>right click en ejemplo-portable.nsi y seleccionar "Compile NSIS Script"</li>
+<li>deberías tener el instalador y la versión portable disponibles</li>
+<li>para probar que funciona correctamente, correr el instalador y la versión portable en una instalación de windows sin los paquetes que instalaste anteriormente</li>
+</ul></div></div><div class="section" id="probar-con-una-aplicacion-real"><h1>probar con una aplicación real</h1><p>ahora para sentirlo mas real, creemos un instalador y una versión portable de<br/>
+un programa real, en este caso, un proyecto personal llamado emesene 2<br/>
+(<a class="reference external" href="http://www.emesene.org/">http://www.emesene.org/</a>).</p><div class="section" id="id1"><h2>pasos</h2><ul class="simple"><li>descargarlo de <a class="reference external" href="http://github.com/emesene/emesene">http://github.com/emesene/emesene</a></li>
+<li>descomprimirlo</li>
+<li>copiar setup.py and ez_setup.py al directorio emesene</li>
+<li>cd emesene</li>
+<li>correr python setup.py py2exe</li>
+<li>cd ..</li>
+<li>copiar los directorios lib y share de la instalación del runtime de gtk (no de la instalación de pygtk) al directorio dist</li>
+<li>copiar todos los archivos del directorio dll al directorio dist</li>
+<li>borrar los locales y temas no usados de los directorios copiados a dist (yo solo dejo el theme MS-Windows)</li>
+<li>crear la siguiente estructura de directorios dentro de dist: etc/gtk-2.0</li>
+<li>dentro de ese directorio crear un archivo llamado gtkrc con una linea como la siguiente dentro:<ul><li>gtk-theme-name = "MS-Windows"</li>
+<li>podes cambiar el tema usado manteniendo otro theme dentro de share/themes y cambiando el nombre del theme en gtkrc</li>
+</ul></li>
+<li>right click en emesene.nsi y seleccionar "Compile NSIS Script"</li>
+<li>right click en emesene-portable.nsi y seleccionar "Compile NSIS Script"</li>
+<li>deberías tener el instalador y la versión portable disponibles</li>
+<li>para probar que funciona correctamente, correr el instalador y la versión portable en una instalación de windows sin los paquetes que instalaste anteriormente</li>
+</ul></div></div><div class="section" id="notas"><h1>notas</h1><ul class="simple"><li>obtengo algunos de los dlls requeridos de portable python (<a class="reference external" href="http://www.portablepython.com/">http://www.portablepython.com/</a>) e inkscape (<a class="reference external" href="http://inkscape.org/">http://inkscape.org/</a>)</li>
+</ul></div></div>
+<div style="clear: both;"/>

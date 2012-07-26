@@ -1,0 +1,5 @@
+
+estaba escribiendo <a href="http://marianoguerra.com.ar/efene/docs/reference/fnc.html">la documentación del frontend del compilador de efene</a> en restructured text (en que otra cosa podria uno escribir documentacion? ;) y pensé:<br/><br/><blockquote>"que bueno que estaría generar el man page desde rst"</blockquote><br/>
+un google despues:<br/><br/><a href="http://jimmyg.org/blog/2009/generating-man-pages-from-restructuredtext.html">Generating Man Pages From reStructuredText </a><br/><br/>
+nota: no tienen que instalar nada, al menos en mi maquina rst2man ya esta disponible.
+<div style="clear: both;"/>

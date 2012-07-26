@@ -1,0 +1,29 @@
+
+para tener pylint en vim (o para el caso cualquier linter de casi cualquier lenguaje) instala syntastic.<br/><br/><a href="https://github.com/scrooloose/syntastic">https://github.com/scrooloose/syntastic</a><br/><br/>
+hacelo por este caballo:<br/><br/><br/><pre>               ,
+              / \,,_  .'|
+           ,{{| /}}}}/_.'            _____________________________________________
+          }}}}` '{{'  '.            /                                             \
+        {{{{{    _   ;, \          /                Gentlemen,                     \
+     ,}}}}}}    /o`\  ` ;)        |                                                |
+    {{{{{{   /           (        |                 this is ...                    |
+    }}}}}}   |            \       |                                                |
+   {{{{{{{{   \            \      |                                                |
+   }}}}}}}}}   '.__      _  |     |    _____             __             __  _      |
+   {{{{{{{{       /`._  (_\ /     |   / ___/__  ______  / /_____ ______/ /_(_)____ |
+    }}}}}}'      |    //___/   --=:   \__ \/ / / / __ \/ __/ __ `/ ___/ __/ / ___/ |
+jgs `{{{{`       |     '--'       |  ___/ / /_/ / / / / /_/ /_/ (__  ) /_/ / /__   |
+     }}}`                         | /____/\__, /_/ /_/\__/\__,_/____/\__/_/\___/   |
+                                  |      /____/                                    |
+                                  |                                               /
+                                   \_____________________________________________/
+</pre>
+<br/>
+para decirle que no sea tan denso podes empezar dumpeando un pylintrc en la ubicación por defecto:<br/><br/><pre>pylint --generate-rcfile &gt; .pylintrc</pre>
+<br/>
+y editandolo a conciencia<br/><br/>
+EDIT: acá esta mi <a href="https://github.com/marianoguerra/me/blob/master/dotfiles/pylintrc%20">pylintrc</a><br/><br/>
+para decirle asyntastic que use pylint y no pyflake o similar agrega esta linea en tu vimrc:<br/><br/><pre>let g:syntastic_python_checker = 'pylint'</pre>
+<br/>
+y todos felices, incluso serj tankian<br/><br/><br/><iframe allowfullscreen="" frameborder="0" height="315" src="http://www.youtube.com/embed/GtUxPg9jRLM" width="420"/>
+<div style="clear: both;"/>

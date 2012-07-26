@@ -1,0 +1,9 @@
+
+<p>ahora que tenemos todo lo que necesitamos para crear nuestra couchapp, podemos ir al directorio _attachments y empezar a modificar el código para que haga lo que queramos</p><br/><p>después de un rato vas a notar que necesitas hacer push de los cambios a couchdb cada vez que queres probarlos, si sos como yo esto se va a poner molesto bastante rápido, hagamos que las herramientas nos ayuden</p><br/><pre>#install inotify-tools
+sudo apt-get install inotify-tools
+</pre><br/><p>con inotify tools vamos a correr un script que va a monitorear cualquier cambio de archivos y va a hacer un push cuando eso suceda, voy a excluir los cambios en *.swp ya que vim crea esos archivos y cambian bastante seguido</p><br/><p>corre este comando en algún shell y dejalo corriendo</p><br/><pre>inotifywait -q -e modify -m -r . | while read line; do if echo $line | grep -v .*.swp; then couchapp push; fi; done
+</pre><br/><p>ahora edita algún archivo y guardalo, anda al shell donde tenes el script corriendo, vas a ver algo como esto:</p><br/><pre>./_attachments/ MODIFY index.html
+2010-10-22 11:00:48 [INFO] Visit your CouchApp here:
+http://wariano:secret@localhost:5984/datos/_design/datos/index.html
+</pre><br/><p>ahora podes editar tus archivos y los cambios van a ser automáticamente subidos a couchdb</p>
+<div style="clear: both;"/>

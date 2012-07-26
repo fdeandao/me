@@ -1,0 +1,9 @@
+
+<pre>git add -p        # add changes interactively
+git diff --staged # diff of stuff already added to the index but not commited (aka last commit vs index)
+git branch -v     # Show branches and the commits they point to
+git add .         # add the content of this directory and anything underneat it
+</pre><br/>
+de <a href="http://ontwik.com/git-github/mastering-git-basics-by-tom-preston-werner/">Mastering Git Basics by Tom Preston-Werner</a><br/><br/>
+y que <a href="http://tmux.sourceforge.net/">tmux</a> esta muy bueno, adios screen tu codigo no mantenido desde 2005 y el formato de la configuracion fueron las razones &lt;3
+<div style="clear: both;"/>

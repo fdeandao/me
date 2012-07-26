@@ -1,0 +1,3 @@
+
+Si tuviera que implementar facebook usando infraestructura de mails...<br/><br/>facebook seria como un gmail en donde cuando A le envía un mail a B le envia el mismo mail con copia oculta a todos en la agenda de A y de B.<br/><br/>hay una agenda publica y global.<br/><br/>tiene buen handling para mime types distintos de txt y html, es decir, muestra bonitamente adjuntos y cosas similares.<br/><br/>cuando entras a tu mail (emm facebook), los mails (emm mensajes en el muro) en lugar de estar colapsados están expandidos.<br/><br/>no tenes carpetas ni labels ni grupos.<br/><br/>los grupos/fans serian listas de correos.<br/><br/>algo mas?
+<div style="clear: both;"/>

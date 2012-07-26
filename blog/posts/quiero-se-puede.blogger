@@ -1,0 +1,10 @@
+
+quiero que grep me deje decirle que ignore las lineas que matchean pero son mas largas que N caracteres.<br/><br/>
+caso: haces "grep -R algo *" y te matchea un js comprimido, feliz búsqueda 10000 lineas mas abajo.<br/><br/>
+se puede? lo hacen?<br/><br/>
+PS: no, no quiero aprender awk :)<br/><br/>
+Update: Roberto Alsina acaba de ahorrarme mucho tiempo a futuro proponiendo esta solución:<br/><br/><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">grep cosa * | cut -c1-80 
+</span><br/><br/>
+que corta cada linea.<br/><br/>
+esto de ser vago y preguntar en broadcast funciona :P
+<div style="clear: both;"/>

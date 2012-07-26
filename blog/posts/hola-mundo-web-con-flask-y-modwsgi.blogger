@@ -1,0 +1,95 @@
+
+necesitaba levantar una aplicación simple usando flask y mod_wsgi sobre apache para ver si encuentro la causa de un error en una aplicación un poco mas compleja y decidi ya que estoy documentarlo por si le es útil a alguien (en el futuro me va a ser útil a mi cuando me olvide ;)<br/><br/>
+empecemos con un poco de bash para establecer el ambiente<br/><br/><pre># creamos el directorio donde vamos a tener nuestro código
+mkdir site
+cd site
+
+# bajamos los módulos que vamos a usar
+wget http://pypi.python.org/packages/source/F/Flask/Flask-0.6.tar.gz
+wget http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.5.5.tar.gz
+wget http://pypi.python.org/packages/source/W/Werkzeug/Werkzeug-0.6.2.tar.gz
+
+# instalar los paquetes necesarios
+sudo apt-get install libapache2-mod-wsgi curl
+
+# desempaquetamos
+tar -xzf Flask-0.6.tar.gz
+tar -xzf Werkzeug-0.6.2.tar.gz
+tar -xzf Jinja2-2.5.5.tar.gz
+
+# creamos enlaces simbólicos a las bibliotecas
+ln -s Flask-0.6/flask/
+ln -s Werkzeug-0.6.2/werkzeug/
+ln -s Jinja2-2.5.5/jinja2/
+</pre><br/>
+ahora con tu editor favorito (osea vim ;)<br/><br/><pre>vim server.py
+</pre><br/>
+escribí lo siguiente<br/><br/><pre>import flask
+
+app = flask.Flask(__name__)
+
+@app.route("/")
+def index():
+    return "hello world!"
+
+if __name__ == '__main__':
+    app.run(host="127.0.0.1", debug=True)
+
+</pre><br/>
+probemos lo que tenemos hasta ahora<br/><br/><pre># levantamos el server de desarrollo
+python server.py &amp;
+
+# probamos traer la pagina principal
+curl http://localhost:5000/
+
+# matamos el server
+kill %
+</pre><br/>
+esto debería andar, ahora vamos con la parte de apache, con tu editor favorito edita un archivo llamado server.wsgi con el siguiente contenido, tené en cuenta de cambiar el path al directorio tuyo, tiene que ser un path absoluto.<br/><br/><pre>import os
+import sys
+
+sys.path.insert(0, "/home/wariano/code/site/")
+
+from server import app as application
+</pre><br/>
+ahora necesitamos crear nuestro sitio dentro de apache<br/><br/><pre>sudo vim /etc/apache2/sites-available/flask
+</pre><br/>
+este es el contenido del archivo, tene en cuenta de cambiar todos los "wariano" por el nombre de usuario que va a correr el proceso. también podes renombrar flask por el nombre de tu proyecto, tené en cuenta de también hacerlo en los otros lugares.<br/><br/><pre>&lt;virtualhost *&gt;
+    ServerName localhost
+
+    WSGIDaemonProcess wariano user=wariano group=wariano threads=5 processes=5
+    WSGIScriptAlias / /var/www/flask/server.wsgi
+
+    LogLevel info
+    ErrorLog /var/log/apache2/flask-error.log
+    CustomLog /var/log/apache2/flask-access.log combined
+
+    &lt;directory /var/www/flask&gt;
+        WSGIProcessGroup wariano
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</pre><br/><br/><pre># creamos el directorio donde apache va a buscar nuestro script
+sudo mkdir -p /var/www/flask
+cd /var/www/flask/
+# linkeamos al script en nuestro directorio (cambia el path al tuyo)
+sudo ln /home/wariano/code/site/server.wsgi
+# activamos nuestro sitio
+sudo a2ensite flask
+# desactivamos el sitio por default (no lo desactives si tenes algo andando,
+# vas a tener que cambiar alguna configuración en el sitio de flask si haces esto)
+sudo a2dissite default
+# reiniciamos apache
+sudo /etc/init.d/apache2 restart
+
+# probamos que el sitio ande
+curl http://localhost/
+</pre><br/>
+y voila! un sitio andando en python sobre apache, si nos queremos poner a jugar y correr un benchmark para medir vaya a saber que podemos usar el benchmark de apache<br/><br/><pre># instalamos las utilidades de apache
+sudo apt-get install apache2-utils
+# corremos el apache con 100 conexiones y 20 conexiones concurrentes
+ab -n 100 -c 20 http://localhost/
+</pre>
+<div style="clear: both;"/>

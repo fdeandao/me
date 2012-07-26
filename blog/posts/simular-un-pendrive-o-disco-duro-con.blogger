@@ -1,0 +1,21 @@
+
+primero lo primero:<br/><br/>
+Q: porque demonios querrias hacer eso?<br/>
+A: razones bastante obscuras, si logro hacer andar lo que estoy intentando va a salir otro post.<br/><br/>
+digamos que quiero usar usb-creator-gtk para crear un pendrive booteable en base a una iso de ubuntu pero estoy dentro de una vm que no ve los pendrives que enchufo en la maquina.<br/><br/>
+como alguien terco digo, "ya se, hago que usb-creator-gtk haga el usb booteable en un archivo y despues le hago dd en el host (que no es linux)".<br/><br/>
+pero ese archivo/device tiene que parecerse a un disco y tener particiones, y aqui empieza la pelea.<br/><br/>
+agregale la siguiente opcion al booteo de tu kernel en grub (si, arranco facil la cosa):<br/><br/><b>loop.max_part=63</b><br/><br/>
+esto nos va a permitir tener particiones en los loop devices (que ya vamos a ver que son).<br/><br/>
+crea un archivo de 2GB con ceros adentro que va a representar a nuestro pendrive inexistente:<br/><br/><b># copiamos de /dev/zero al archivo llamado pen 8 pedazos de 256M </b><br/><b>dd if=/dev/zero of=pen bs=256M count=8</b><br/><br/>
+ahora tenemos que crear el loop device que apunta a este archivo<br/><br/><b># crea el primer loop device que tengas libre (normalmente /dev/loop0) apuntando al archivo pen</b><br/><b>sudo losetup -f pen</b><br/><br/>
+ahora creemos particiones en nuestro archivo:<br/><br/><b>sudo fdisk /dev/loop0</b><br/><br/>
+vamos a crear una particion que tome todo el tamanio del dispositivo:<br/><br/>
+en la consola de fdisk apreta n, p, 1, <enter>, <enter>, w</enter></enter><br/><br/>
+ahora tenemos que decirle al kernel que cargue las particiones de loop0 de nuevo<br/><br/><b>sudo blockdev --rereadpt /dev/loop0</b><br/><br/>
+una vez cargadas, formateamos la primera particion<br/><br/><b>sudo mkfs.vfat /dev/loop0p1</b><br/><br/>
+ahora con nuestro device que se parece a un pendrive podemos arrancar usb-creator-gtk:<br/><br/><b>sudo usb-creator-gtk --allow-system-internal</b><br/><br/>
+elegimos /dev/loop0p1, elegimos la iso y le damos a Make Startup Disk<br/><br/>
+terminamos, cerramos usb-creator-gtk y eliminamos el loop device<br/><br/><b>sudo losetup -d /dev/loop0p1</b><br/><br/>
+si hicieramos dd de este archivo a un pendrive tendriamos un pendrive booteable.
+<div style="clear: both;"/>

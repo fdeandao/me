@@ -1,0 +1,21 @@
+
+si seniores, por razones que desconozco uno de los objetivos de mi vida es mandar un parche al kernel y que lo acepten.<br/><br/>
+imaginemos la siguiente situación:<br/><br/><br/>
+* mujer atractiva en un bar sostiene un smartphone<br/>
+* hombre menos que standard (aka yo) al otro lado del bar nota la interacción humano maquina y decide acercarse.<br/><br/>
+- hola, ese es un HTC no?<br/>
+- mmmh, si<br/><br/>
+rota 45 grados intentando darle la espalda al hombre menos que standard<br/><br/>
+- sabias que si:<br/><br/>
+a) me aceptan el parche<br/>
+b) los drivers de comedi pasan de staging al mainline kernel<br/>
+c) y resulta que vos usas los drivers comedi (que no se ni que son)<br/>
+d) estas usando una linea de código que yo toque?<br/><br/>
+la dama rota en dirección opuesta a la anterior operación rotacional, levanta su mirada, mira a los ojos al hombre menos que standard y lo besa apasionadamente.<br/><br/>
+disclaimer: los hechos o personas aquí expuestos son solo ficción, cualquier coincidencia con la realidad es pura ficción.<br/><br/>
+asi es seniores, luego de ver este video:<br/><br/><iframe allowfullscreen="" frameborder="0" height="349" src="http://www.youtube.com/embed/LLBrBBImJt4" width="560"/><br/><br/>
+y seguir esta guiá<br/><br/><a href="https://github.com/gregkh/kernel-tutorial/blob/master/lxf_article/write_kernel_patch.txt">https://github.com/gregkh/kernel-tutorial/blob/master/lxf_article/write_kernel_patch.txt</a><br/><br/>
+hice esto:<br/><br/><a href="http://driverdev.linuxdriverproject.org/pipermail/devel/2011-July/018472.html">http://driverdev.linuxdriverproject.org/pipermail/devel/2011-July/018472.html</a><br/><br/>
+obviamente vendrán mas parches cuando me acepten o rechacen este y entienda el proceso bien como para ponerme a mandar mas parches/cambios<br/><br/>
+por ahora a la espera de ser rechazado olímpicamente, los mantendré informados (?)
+<div style="clear: both;"/>

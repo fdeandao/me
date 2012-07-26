@@ -1,0 +1,3 @@
+
+en una clase tengo dos atributos privados, los cuales solo son modificados por un método. Hasta ahí todo bien.<br/> El problema es que para poder serializar esa clase a json y para poder guardarla en Hibernate tienen que ser beans (osea esos atributos tienen que tener getter y setters) por lo cual me rompe todo el bendito encapsulamiento, ya que cualquiera manipulando un objeto puede romper la consistencia y relacion de los dos atributos usando el set de uno (no, no puedo deducir que hacer con el otro en base al valor de uno).<br/><br/>Cosas que pasan.<br/><br/>PD: puede que haya una forma de arreglarlo, yo no la se.
+<div style="clear: both;"/>

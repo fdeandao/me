@@ -1,0 +1,3 @@
+
+si tenes esa combinacion, estos links funcionan de primera.<br/><br/><a href="http://wiki.debian.org/WiFi/ath_pci">http://wiki.debian.org/WiFi/ath_pci</a><br/><br/><a href="http://wiki.debian.org/WiFi/HowToUse">http://wiki.debian.org/WiFi/HowToUse</a><br/><br/>EDIT: para poder levantar nm-applet hace falta estar en el grupo netdev<br/><br/>para hacerlo:<br/><br/>$su<br/>#gpasswd netdev -a <span style="font-style: italic;">tuusuario</span>
+<div style="clear: both;"/>

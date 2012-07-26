@@ -1,0 +1,28 @@
+
+<span style="font-size: large;">en tu server preferido:</span><br/><br/><pre>[galaxy]$ git init --bare me.git
+Initialized empty Git repository in /home/marianoguerra/marianoguerra.com.ar/me.git/
+
+[galaxy]$ cat me.git.php 
+
+&lt;?
+header("Content-type: text/plain");
+system("git log --pretty=format:\"%aD %an: %s%n%b%n\"");
+?&gt;
+
+
+[galaxy]$ cp me.git.php me.git/index.php
+
+</pre><br/><span style="font-size: large;">en tu maquina:</span><br/><br/><pre>[mariano@ganesha ~]$ git clone ssh://marianoguerra@marianoguerra.com.ar/home/marianoguerra/marianoguerra.com.ar/me.git/         
+Cloning into me...
+marianoguerra@marianoguerra.com.ar's password: 
+warning: You appear to have cloned an empty repository. </pre><pre> </pre><pre>[mariano@ganesha ~]$ cd me </pre><pre> </pre><pre>[mariano@ganesha me]$ git commit --allow-empty -m "hello world"
+[master (root-commit) 5bce037] hello world </pre><pre> </pre><pre>[mariano@ganesha me]$ git push origin master </pre><pre>marianoguerra@marianoguerra.com.ar's password: 
+Counting objects: 2, done.
+Writing objects: 100% (2/2), 171 bytes, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To ssh://marianoguerra@marianoguerra.com.ar/home/marianoguerra/marianoguerra.com.ar/me.git/
+ * [new branch]      master -&gt; master</pre><pre> </pre><pre>[mariano@ganesha me]$ curl http://marianoguerra.com.ar/me.git/
+Tue, 5 Jul 2011 12:46:17 +0100 Mariano Guerra: hello world
+</pre><br/>
+se aceptan mejoras de todo tipo :D
+<div style="clear: both;"/>

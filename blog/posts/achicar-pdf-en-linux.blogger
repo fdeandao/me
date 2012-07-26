@@ -1,0 +1,5 @@
+
+con ghostscript<br/><br/><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf</span><br/><br/>
+con image magic<br/><br/><div style="font-family: &quot;Courier New&quot;,Courier,monospace;">
+convert -compress JPEG -quality 90 input.pdf output.pdf </div>
+<div style="clear: both;"/>

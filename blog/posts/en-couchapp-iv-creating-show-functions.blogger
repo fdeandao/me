@@ -1,0 +1,28 @@
+
+<p>we need to display some entity in its own web page, for that we need to fill an html template with the values of the document stores in the database, a template is a nice fit for this, let's see how we do this in our couchapp</p><br/><p>first, create the show function, this is a function that when called displays a document in some format, in our case in HTML</p><br/><pre># generate the show function
+couchapp generate show dato
+# open it with a text editor
+vim shows/dato.js
+</pre><br/><p>we will see this content</p><br/><br/><pre>function(doc, req) {  
+  
+}
+</pre><br/><p>we replace the content with something like this</p><br/><br/><pre>function(doc, req) {
+    if (doc !== null &amp;&amp; doc.name) {
+        var ddoc = this,
+            Mustache = require("vendor/couchapp/lib/mustache"),
+            path = require("vendor/couchapp/lib/path").init(req),
+            assetPath = path.asset();
+
+        provides("html", function() {
+            return Mustache.to_html(ddoc.templates.dato, {
+                assetPath: assetPath,
+                doc: doc
+            });
+        });
+    }
+    else {
+        return "not found";
+    }
+}
+</pre><br/><p>here we check that we have a document, if not return "not found", also we create some objects that will help us and finally we render the template passing some values that will be used in the template.</p><br/><p>my template is located at templates/dato.html (that's why ddoc.templates.dato) and contains a mustache template, see <a href="&quot;http://mustache.github.com/&quot;">mustache documentation for information about the format</a></p><br/><p>the url to access this function is [database]/_design/[app]/_show/[showname]/[docid] an example could be http://localhost:5984/datos/_design/datos/_show/dato/6bd97648d74961996c8f0d42b2005761</p>
+<div style="clear: both;"/>

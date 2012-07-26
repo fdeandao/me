@@ -1,0 +1,10 @@
+
+una de las ideas cuando empece rst2html5 era tener la posibilidad de transformar el documento generado despues de transformarlo a html.<br/><br/>
+recien acabo de empujar los cambios para tener post processors en rst2html5<br/><br/>
+un ejemplo?<br/><br/>
+dado el siguiente archivo:<br/><br/><a href="https://raw.github.com/marianoguerra/rst2html5/master/examples/slides.rst">https://raw.github.com/marianoguerra/rst2html5/master/examples/slides.rst </a><br/><br/>
+corriendo el comando:<br/><br/>
+ ./rst2html5 --deck-js --pretty-print-code examples/slides.rst  &gt; slides.html<br/><br/>
+se obtiene lo siguiente (hint, apreta enter, la barra espaciadora o las fechitas):<br/><br/><a href="http://marianoguerra.com.ar/rst2html5/slides.html">http://marianoguerra.com.ar/rst2html5/slides.html</a><br/><br/>
+hacer un post processor no es mas que manipular el elementtree resultante, escucho ideas para mas postprocessors :)
+<div style="clear: both;"/>

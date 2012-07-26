@@ -1,0 +1,3 @@
+
+<pre><br/>import os<br/>import pydcop<br/><br/>s = os.system( "ps aux|grep dcopserver|grep -v grep" )<br/><br/>if s == 0:<br/>   print "dcop running"<br/><br/>   if "amarok" in pydcop.apps():<br/>       print "amarok is running"<br/>       amarok = pydcop.DCOPApplication( "amarok" )<br/>       if amarok.player.isPlaying():<br/>           print "amarok is playing"<br/>           print amarok.player.artist()<br/>       else:<br/>           print "amarok is not playing"<br/>   else:<br/>       print "amarok is not running"<br/><br/>else:<br/>   print "dcop not running"<br/></pre><br/><br/>no se porque no lo hice antes...
+<div style="clear: both;"/>

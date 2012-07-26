@@ -1,0 +1,14 @@
+
+este fin de semana fue el <a href="http://spawnfest.com/">spawnfest</a>, un evento en el que tenes dos días para hacer una aplicación en erlang que sera juzgada por grosos del lenguaje y de yapa con interesantes <a href="http://spawnfest.com/prizes/">premios</a>.<br/><br/>
+estaba inscripto hace como 5 meses pero coincidio con un viaje a praga.<br/><br/>
+si bien era viaje de trabajo y ya estuve en praga dos veces antes, da un poco de cosita pasarse el finde encerrado en lugar de salir a pasear.<br/><br/>
+así que hice un equilibrio y le dedique el tiempo que consideraba que de todas formas estaba al pedo/cansado (aka a la maniana y a la tardecita) y salio <b>qrly</b>.<br/><br/>
+el proyecto esta en github aca:<br/><br/><a href="https://github.com/marianoguerra/qrly">https://github.com/marianoguerra/qrly</a><br/><br/>
+si bien no lo termine completamente quedo bastante util, los filtros que faltan son mas avanzados y ya tendre tiempo de agregarlos.<br/><br/>
+en resumen y siendo esta mi tercera aplicación útil en erlang (<a href="https://github.com/marianoguerra/efene">efene</a>, <a href="https://github.com/marianoguerra/fnt---efene-templates">fnt</a> y <a href="https://github.com/marianoguerra/qrly">qrly</a>) continuo pensando que es un lenguaje muy copado y potente, me sorprende lo mucho que se logra con pocas lineas de codigo.<br/><br/>
+en lo malo, si bien la sintaxis ya no me molesta y hasta podria decir que me gusta, lo que me sigue molestando es los 3 tipos de puntuación para delimitar sentencias, el problema no es usarlos sino tener que cambiarlas cuando uno mueve o agrega codigo. Por ultimo, TDD se hace un poco molesto si uno agrega el paso de compilar (python me maleduco en esto ;)<br/><br/>
+sobre el final, me quedaban unos minutos asi que hice un ejemplo muy simple de como usarlo llamado oliver, que es un parser de atom.<br/><br/><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_aK0jqiUoWCA/TMHkuMZLP_I/AAAAAAAAA6Q/ZdPDsv6Tzck/s1600/oliverc.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://3.bp.blogspot.com/_aK0jqiUoWCA/TMHkuMZLP_I/AAAAAAAAA6Q/ZdPDsv6Tzck/s320/oliverc.jpg" width="320"/></a></div><br/><br/>
+por ultimo, no podia irme sin presentarles a la mascota del projecto "Qrly the bird"<br/><br/><div class="separator" style="clear: both; text-align: center;"><a href="https://github.com/marianoguerra/qrly/raw/master/extra/qrly.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="292" src="https://github.com/marianoguerra/qrly/raw/master/extra/qrly.jpg" width="320"/></a></div><br/>
+como siempre, ayuda mas que bienvenida, la licencia es BSD.<br/><br/>
+esto fue qrly para sega genesis, espero que les haya gustado<br/><br/><b>ACTION!</b>
+<div style="clear: both;"/>

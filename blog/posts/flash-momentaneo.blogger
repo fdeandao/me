@@ -1,0 +1,3 @@
+
+Dado un algoritmo de hashing sin colision (supongamos que SHA1 no tiene colisiones), genera una salida de 160 bits dada una entrada de tamaño maximo de 2^64 bits.<br/><br/>podriamos comprimir cualquier entrada a una salida de longitud fija (y muy chica) y necesitar solo de una capacidad de computo cuasi infinita para descomprimirlo por fuerza bruta.<br/><br/>ahora necesito capacidad de computo cuasi infinita (le voy a preguntar a alan turing que tiene una cinta y memoria infinita, quizas podria pedirle que guarde una rainbow table ahi y le pido un archivo dandole el hash).<br/><br/>(?)
+<div style="clear: both;"/>

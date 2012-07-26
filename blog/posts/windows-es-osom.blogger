@@ -1,0 +1,49 @@
+
+tengo que instalar SQL express no se que para el laburo<br/><br/><ol><li>bajo el instalador después de googlear</li>
+<li>lo ejecuto</li>
+<li>se desempaca</li>
+<li>loading...</li>
+<li>necesitas .NET framework 3.5 SP1!</li>
+<li>me da una url, la cual visito</li>
+<li>me dice que salio .NET 4.0 que incluye 3.5 y todos los SPs</li>
+<li>lo bajo</li>
+<li>ejecuto</li>
+<li>baja mas cosas</li>
+<li>repita de 2 a 4</li>
+<li>repita 5!</li>
+<li>busco en google y bajo .NET framework 3.5 SP1</li>
+<li>ejecuto</li>
+<li>baja mas cosas</li>
+<li>éxito!</li>
+<li>repita de 2 a 4</li>
+<li>necesita windows installer 4.5!</li>
+<li>busco en google eso</li>
+<li>lo bajo</li>
+<li>lo ejecuto</li>
+<li>me dice que para instalar windows installer tengo que cerrar windows installer (?)</li>
+<li>le doy que si</li>
+<li>instala</li>
+<li>unilateralmente me reinicia la maquina (o quizás me lo advirtió en algún lado, ni idea)</li>
+<li>se queda en "shuting down"</li>
+<li>después de un rato le doy hard reset</li>
+<li>arranco de nuevo</li>
+<li>que estaba haciendo?</li>
+<li>ahh, SQL express no se que.., corro el instalador</li>
+<li>le doy a instalar</li>
+<li>corre un check</li>
+<li>no tenes power shell!</li>
+<li>busco power shell en google, llego a una pagina, muchos links</li>
+<li>elijo uno random, acerte!</li>
+<li>me lleva a otra pagina que dice que tengo que correr Windows Genuine Check (no WPA, es otro que genera un código)</li>
+<li>bajo eso</li>
+<li>lo ejecuto</li>
+<li>me da un código con un boton "copy to clipboard"</li>
+<li>lo copio y lo pego en la pagina</li>
+<li>me lleva de nuevo a la pagina de #35</li>
+<li>le doy download</li>
+<li>ejecuto</li>
+<li>next, I agree, next, finish (no los puse en todos porque se haria denso)</li>
+<li>en que estaba? ahh SQL express no se que..</li>
+<li>re run el check, next, next, next, next, Install, next, finish</li>
+</ol><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_IvSW7mPeqRU/TCAkGghWUnI/AAAAAAAAADI/OHBm9nVmMJw/s1600/braveheart_freedom.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="266" src="http://3.bp.blogspot.com/_IvSW7mPeqRU/TCAkGghWUnI/AAAAAAAAADI/OHBm9nVmMJw/s320/braveheart_freedom.jpg" width="320"/></a></div>
+<div style="clear: both;"/>

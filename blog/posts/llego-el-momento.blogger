@@ -1,0 +1,10 @@
+
+si seniores, basta de intentar evitar lo inevitable, hoy me voy a aprender de memoria los shorthands de <a href="https://developer.mozilla.org/en/CSS">CSS</a>.<br/><br/>
+parece que la cosa es como un reloj, empezando en las doce y girando en sentido horario (como va a girar un reloj sino).<br/><br/>
+osea que es: <i>top, right, bottom, left</i>.<br/><br/>
+si se especifican 3 simplemente el segundo se refiere a left y right:<i> top, right - left, bottom</i>.<br/><br/>
+si se ponen dos se aplican de a pares: <i>top - bottom, right - left</i>.<br/><br/>
+espero habermelos aprendido bien porque ahora me quedaron grabados con lo del reloj :D<br/><br/>
+solo me tomo como 5 anios de consultar w3schools cada vez que necesitaba recordarlo.<br/><br/>
+PD: te conte que la documentacion de mozilla le pasa el trapo a la de w3schools y que tendrias que linkear a <a href="https://developer.mozilla.org/en/CSS">MDC CSS Docs</a> cuantas veces puedas asi rankea arriba de w3schools en google y todos somos felices?
+<div style="clear: both;"/>

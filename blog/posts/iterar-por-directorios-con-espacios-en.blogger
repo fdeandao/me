@@ -1,0 +1,26 @@
+
+la vida nos sonríe, nos sentimos cual neo escribiendo comandos en el shell a diestra y siniestra, estamos a punto de para las balas con las manos, corremos:<br/><br/><pre>for i in $(ls); do echo $i; done
+</pre><br/>
+y nuestra ilusión hacker se nos cae a pedazos al ver que cada palabra de un directorio o archivo con espacios sale en una linea nueva.<br/><br/>
+no desesperaos (?) he aquí la solución.<br/><br/>
+reproduzcamos el error para después arreglarlo:<br/><br/><pre>$ mkdir -p "t/folder 1" "t/folder 2" "t/folder 3 with more spaces"
+$ cd t
+$ for i in $(ls); do echo $i; done
+folder
+1
+folder
+2
+folder
+3
+with
+more
+spaces
+</pre><br/><div class="separator" style="clear: both; text-align: center;"><a href="http://indianinthemachine.files.wordpress.com/2009/11/where-is-your-god-now.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="213" src="http://indianinthemachine.files.wordpress.com/2009/11/where-is-your-god-now.jpg" width="320"/></a></div><br/><br/>
+vamos de nuevo ahora con la solución:<br/><br/><pre>$ IFS="$(echo -e "\n\r")"
+$ for i in $(ls); do echo $i; done
+folder 1
+folder 2
+folder 3 with more spaces
+</pre><br/>
+y todos felices (incluso <a href="http://www.youtube.com/watch?v=RbArCOuDevs">carlin calvo que puede seguir hackeando</a> literalmente a dos manos en sus computadoras auspiciadas por fravega)
+<div style="clear: both;"/>

@@ -1,0 +1,16 @@
+
+desde hace bastante tiempo ando buscando una excusa para practicar/mejorar/aprender las siguientes herramientas:<br/><br/><ul><li>algun lisp</li>
+<li><a href="http://www.zeromq.org/">zeromq</a></li>
+<li>mi oxidado C</li>
+<li><a href="http://mongrel2.org/">mongrel2 </a></li>
+</ul><br/>
+hace tiempo que venia pensando entre aprender <a href="http://racket-lang.org/">racket</a> o <a href="http://clojure.org/">clojure</a>, ninguno me terminaba de atraer (excepto los proyectos <a href="http://overtone.github.com/">overtone</a> y <a href="http://mad.emotionull.com/">music as data</a> de clojure).<br/><br/>
+y mirando no se por donde me tope con el <a href="http://web.cs.wpi.edu/%7Ejshutt/kernel.html">lenguaje de programacion kernel</a>, que tiene unas ideas muy interesantes atrás, por un tiempo pensé que no tenia ninguna implementacion (ya que era simplemente una tesis de una persona) hasta que me tope con <a href="http://klisp.org/">klisp</a>, una <a href="https://bitbucket.org/AndresNavarro/klisp/">implementacion de kernel</a> hecha por un chico de buenos aires.<br/><br/>
+mi primer ayuda al proyecto fue ayudarlo con la pagina <a href="http://klisp.org/">klisp.org</a>, después se me ocurrió una forma para juntar varias cosas que quería ejercitar.<br/><br/>
+así que me decidí a hacer bindings de zeromq para klisp.<br/><br/>
+el proyecto a pesar de tener 3 días ya sirve para crear sockets y mandar y recibir información, solo me faltan implementar 3 funciones* que no son esenciales.<br/><br/>
+el siguiente paso es darle forma de librería, documentar y limpiar un poco y ponerme a ver como hacer que klisp sea un ciudadano de primera clase en mongrel2 (supongo que requerirá algún otro binding)<br/><br/>
+sin mas vueltas, el proyecto esta acá:<br/><br/><a href="https://github.com/marianoguerra/klisp-zmq">https://github.com/marianoguerra/klisp-zmq</a><br/><br/>
+espero que lo disfruten, saludos a mi mama que me esta mirando desde casa <br/><br/>
+* <a href="https://www.youtube.com/watch?v=FZHXNzTAuFA">de allí la expresión</a>: mas fácil que escribir bindings para zeromq
+<div style="clear: both;"/>

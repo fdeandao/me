@@ -1,0 +1,11 @@
+
+ayer estaba intentando recordar si google +1 ya había salido, mientras buscaba (no lo habrán anunciado tan bien)<br/><br/>
+se me ocurrió una idea.<br/><br/>
+dado que google +1 es para "gustar" urls, porque no hacer un simple reddit, pensé, el tema se corto rápido cuando leí los términos de servicio que impiden publicar quien gusta que, ademas estaba terco en la idea de no usar backend, ademas iba a tener que escribir autenticacion y comentarios.... o no?<br/><br/>
+en un rato salio un hack muy simple denominado "interesante"<br/><br/>
+la idea es que ves una pagina o recurso y querés charlas/comentar sobre eso o "+1'earlo", con un simple bookmarklet o entrando a la pagina, pones la url y bam! listo para comentar y todo sin ningún backend usando google +1, disqus, jquery y un css reset desde cdns, lo unico que tuve que hacer es una html muy básico con algo de css y js.<br/><br/>
+el resultado esta aca:<br/><br/><a href="http://marianoguerra.com.ar/interesante/">http://marianoguerra.com.ar/interesante/</a><br/><br/>
+si quieren discutir sobre interesante:<br/><br/><a href="http://marianoguerra.com.ar/interesante/?url=http://marianoguerra.com.ar/interesante/">http://marianoguerra.com.ar/interesante/?url=http://marianoguerra.com.ar/interesante/</a><br/><br/>
+me quedo pensando que otro servicio tercerizado podría usar...<br/><br/>
+me gustaría de alguna forma listar los contenidos creados pero sin backend, ideas se aceptan
+<div style="clear: both;"/>

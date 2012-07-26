@@ -1,0 +1,4 @@
+
+necesito probar la implementación de <a href="http://www.erlang.org/eeps/eep-0008.html">declaracion de tipos</a> en efene, para automatizarlo un poco decidi sacar todas las declaraciones de tipos del codigo de erlang con una linea de bash:<br/><br/>
+$ grep -R "^\-type" * | grep \.erl | cut -d ':' -f 2- &gt; ~/all-erlang-types.txt
+<div style="clear: both;"/>

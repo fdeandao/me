@@ -1,0 +1,4 @@
+
+build a couchdb backend for the logger module in emesene 2 so you can have log synchronization between machines.<br/><br/><b>one step further:</b><br/><br/>
+document the design and make it generic for any IM client so people can store all their chat logs in the same database.
+<div style="clear: both;"/>

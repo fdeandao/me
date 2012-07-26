@@ -1,0 +1,3 @@
+
+para instalar el plugion flash en linux hay que copiar libflashplayer.so a ~/.mozilla/plugins (si la carpeta plugins no existe, hay que crearla)<br/><br/>para sacar el status bar, hay que editar el archivo webrunner.xul que se encuentra en prism/chrome/webrunner.jar<br/><br/>hay que comentar desde la linea que empieza con "&lt;statusbar id="statusbar"&gt;" hasta "&lt;/statusbar&gt;" sacando los comentarios internos en caso de existir (en la 0.9 hay uno)<br/><br/>es mas un recordatorio que algo util para alguien, pero por si alguien lo googlea...
+<div style="clear: both;"/>

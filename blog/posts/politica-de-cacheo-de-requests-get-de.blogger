@@ -1,0 +1,3 @@
+
+Si alguna vez estas sirviendo algún contenido dinámico (o requests AJAX) y te das cuenta que IE esta devolviendo siempre un valor viejo y no podes cambiarlo a POST para evitar el cacheo entonces la opción que encontré es setear en el header del response los siguientes valores.<br/><br/>now = time.time()<br/>handler.set_header("Expires", now)<br/>handler.set_header("Last-Modified", now)<br/>handler.set_header("Date", now)<br/><br/>(tradúzcanlo al framework/librería que usen)<br/><br/>PD: hasta ahora parece andar pero le dejo la puerta entreabierta a IE para que me sorprenda...
+<div style="clear: both;"/>

@@ -1,0 +1,49 @@
+
+<pre>Mr. A: esta semana escuche / lei las palabras Inflacion y Riesgo Pais un par de veces
+Yo: alla?
+Mr. A: si
+Yo: lololol
+Mr. A: sisi
+Mr. A: !!!1!!12oneEleven!!1!
+Yo: (son tres personas levantando los brazos)
+Mr. A: fourteeeen 
+Yo: esto es nado sincronizado
+Yo:  \o\
+Yo: |o|
+Yo: /o/
+Yo: \o/
+Yo: \o_
+Yo: _o/
+Yo: y asi...
+Mr. A: sale gif
+Mr. A: o script de bash
+Yo: ahi va
+Yo: http://marianoguerra.com.ar/random/nado.ogv
+</pre><br/>
+codigo:<br/><br/><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">ARM</span> <span class="o">=</span> <span class="p">[</span><span class="s">'</span><span class="se">\\</span><span class="s">'</span><span class="p">,</span> <span class="s">'_'</span><span class="p">,</span> <span class="s">'/'</span><span class="p">,</span> <span class="s">' '</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">figure</span><span class="p">():</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ARM</span><span class="p">)</span> <span class="o">+</span> <span class="s">"o"</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ARM</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">erase</span><span class="p">():</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="se">\b\b\b</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">dance</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">figure</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">erase</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">dance</span><span class="p">()</span>
+</pre></div><br/>
+PD: "alla" es españa<br/><br/>
+recomendado gtk-recordmydesktop
+<div style="clear: both;"/>

@@ -1,0 +1,30 @@
+
+<p>hace un tiempo estoy desarrollando un proyecto en scala.</p>
+
+<p>de los lenguajes estaticamente tipados es el mejor que he usado hasta ahora, pero hay algo que no me gusta hasta ahora...</p>
+
+<p>algunos desarrolladores parecen nenes que nunca los dejaron hacer nada y a la primera oportunidad se mandan cualquiera.</p>
+
+<p>resulta que en scala los metodos pueden tener cualquier nombre, letras, simbolos, unicode etc.</p>
+
+<p>y eso lleva a cosas como lo siguiente:</p>
+
+<pre>
+
+
+<pre>
+ah! me olvidaba <: es="" agrega="" headers="" al="" request="" o.o=""><p>les dejo una para el camino:</p>
+
+<pre>
+&gt;/ es 
+
+Set the default character set to be used when processing 
+the request in &gt; and derived operations
+ &gt;~, as_str, etc.
+</pre>
+
+<a href="http://databinder.net/dispatch-doc/dispatch/HandlerVerbs.html">diviertanse</a>
+
+<p>patea la arenita y dice bajito "explicit is better than implicit"
+</p><div style="clear: both;"/>
+</:></pre></pre>

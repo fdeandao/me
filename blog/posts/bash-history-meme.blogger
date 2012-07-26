@@ -1,0 +1,3 @@
+
+mariano@mousehouse:~$ history | awk '{print $2}' | sort | uniq -c | sort -rn | head<br/>     83 python<br/>     64 cd<br/>     52 sh<br/>     51 ls<br/>     49 svn<br/>     30 sudo<br/>     30 ncmpc<br/>     28 vim<br/>     11 rm
+<div style="clear: both;"/>

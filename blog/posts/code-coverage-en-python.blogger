@@ -1,0 +1,10 @@
+
+<p>convirtiéndome en un unittester necesito motivación para seguir testeando, esa motivación me sirve para mejorar, en el caso de python compito contra el puntaje que me da pylint, en el caso de testing estaba buscando algo para competir y encontré coverage, que es una herramienta que mide cuando código cubren tus tests.<br/></p><br/><p>si bien el code coverage no es indicativo que no hay bugs, es una buena forma de intentar superarse y agregar mas pruebas.<br/></p><br/><p>acá va una mini receta de como instalarlo y usarlo, en mi caso ubuntu 10.10 pero debería adaptarse fácilmente a otros SO.<br/></p><br/><h2>instalando lo necesario</h2><br/><pre>sudo apt-get install build-essential python-dev
+sudo easy_install pip
+</pre><br/><h2>instalando coverage</h2><br/><pre>sudo pip install coverage
+</pre><br/><h2>probandolo</h2><br/><p>yo tengo todos los tests en un directorio llamado test (que original) y en el archivo __main__.py importo todas las clases que heredan de unittest.TestCase y llamo a unittest.main()<br/></p><br/><p>para correr coverage ejecuto<br/></p><br/><pre>coverage run test/__main__.py
+coverage html --omit="/usr/*"
+</pre><br/><p>con el primero se mide la cobertura de código, con el segundo se genera un reporte html, ahora miramos el reporte<br/></p><br/><pre>firefox htmlcov/index.html
+</pre><br/><p>para tener algo mas simple y fácil de correr para medir el avance podemos usar<br/></p><br/><pre>coverage report --omit="/usr/*"
+</pre><br/><p>que nos muestra el reporte en consola, podemos hacerle un watch o un grep para seguir mas de cerca algún modulo<br/></p><br/><p>bueno, esta fue la forma de hacer el testing algo mas parecido a una competencia por quien consigue el puntaje mas alto, al menos a mi eso me sirve<br/></p>
+<div style="clear: both;"/>

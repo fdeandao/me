@@ -1,0 +1,3 @@
+
+este post esta sponsoreado por la necesidad de subir los cambios de una aplicación hecha con couchapp cada vez que realizo un cambio en un archivo*<br/><br/><pre><br/>$ sudo aptitude install inotify-tools<br/>$ inotifywait -q -e modify -m -r . | while read line; do if echo $line | grep -v .*.swp<br/>; then couchapp push; fi; done<br/></pre><br/><br/>como uso vim y constantemente guarda el estado de la edición en archivos ocultos que terminan en .swp los filtro para evitar actualizar innecesariamente.<br/><br/>* tengo el tick de hacer un cambio y probarlo<br/><br/>abuante inotify y bash
+<div style="clear: both;"/>

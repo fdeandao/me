@@ -1,0 +1,3 @@
+
+<a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.codinghorror.com/blog/images/software_engineering_explained.gif"><img style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 400px;" src="http://www.codinghorror.com/blog/images/software_engineering_explained.gif" border="0" alt=""/></a>
+<div style="clear: both;"/>

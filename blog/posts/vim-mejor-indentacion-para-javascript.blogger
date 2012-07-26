@@ -1,0 +1,20 @@
+
+me estaba cansando que en algunos casos vim no me indentaba automáticamente el código, tendía a ser si estaba adentro de un json literal o algo así.<br/><br/>
+leyendo un poco me entere que es porque por defecto vim usa el indentador de C para javascript y cuando ve cosas que no entiende hace lo que todos hariamos:<br/><br/><br/><div class="separator" style="clear: both; text-align: center;">
+<a href="http://www.whoaorno.com/images/507.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="200" src="http://www.whoaorno.com/images/507.jpg" width="320"/></a></div>
+<br/>
+busque un poco y encontre este plugin:<br/><br/><a href="https://github.com/pangloss/vim-javascript">https://github.com/pangloss/vim-javascript</a><br/><br/>
+que promete no solo indentar javascript en archivos .js sino dentro del html, para ello lo instale con <a href="https://github.com/tpope/vim-pathogen">pathogen</a>:<br/><br/><pre><code>cd ~/.vim/bundle
+git clone https://github.com/pangloss/vim-javascript.git </code></pre>
+<br/>
+y como todo usuario atolondrado pegue lo que vi mas abajo en mi .vimrc<br/><br/><pre><span class="k">let</span> <span class="k">g</span>:html_indent_inctags <span class="p">=</span> <span class="s2">"html,body,head,tbody"</span>
+<span class="k">let</span> <span class="k">g</span>:html_indent_script1 <span class="p">=</span> <span class="s2">"inc"</span>
+<span class="k">let</span> <span class="k">g</span>:html_indent_style1 <span class="p">=</span> <span class="s2">"inc"</span></pre>
+<br/>
+ahora vamos a ver como anda, por lo pronto me indenta bien en el html cosa que es muy util (aunque uno nunca deberia escribir js en html :)<br/><br/>
+edit:<br/><br/>
+  despues de usarlo un poco me di cuenta que no me estaba indentando igual en html y en archivos .js me fui a leer y me di con que hay que correr <i>rake install</i> en el directorio despues de traerlo para que instale la sintaxis y el indentador:<br/><br/><pre>sudo apt-get install rake
+cd ~/.vim/bundle/vim-javascript
+rake install
+</pre>
+<div style="clear: both;"/>

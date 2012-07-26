@@ -1,0 +1,18 @@
+
+por alguna razón me <a href="https://github.com/marianoguerra/efene">gusta</a> <a href="https://github.com/marianoguerra/qrly">parsear</a> <a href="https://github.com/marianoguerra/fnt---efene-templates">cosas</a>.<br/><br/>
+así que hoy no es la excepción y termine un proyectito bajo el lema "que pasa si me levanto un poco mas temprano y me pongo mas productivo"<br/><br/>
+el resultado son dos librerías en dos lenguajes distintos pero que hacen lo mismo.<br/><br/>
+el resultado es <a href="https://github.com/marianoguerra/emel">emel</a> y <a href="http://marianoguerra.github.com/legojs/">legojs</a><br/><br/>
+ambos se encargan de parsear expresiones similares a un selector css (o un selector de jquery) y generar el html de esa expresión.<br/><br/>
+por ejemplo:<br/><br/><pre>#wrapper &gt; ({welcome } + em.user {username} + strong {!})
+</pre>
+<br/>
+genera:<br/><br/><pre>&lt;div id="wrapper"&gt;welcome &lt;em class="user"&gt;username&lt;/em&gt;&lt;strong&gt;!&lt;/strong&gt;&lt;/div&gt; </pre>
+<br/>
+y así <br/><br/>
+porque?<br/><br/>
+ en paginas muy dinámicas normalmente uno necesita generar pequenios snippets de html para actualizar cosas y es un perno usar un template para eso, peor es escribir el html, escapar cosas y cerrar tags.<br/><br/>
+esto es algo intermedio.<br/><br/>
+legojs viene con un plugin para jquery que permite traducirlo directamente a nodos dom o a una representación intermedia. <br/><br/>
+ademas, porque se me dio la gana.
+<div style="clear: both;"/>

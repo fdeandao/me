@@ -1,0 +1,54 @@
+
+ahora tenemos documentos y para pertenecer a este siglo decidiste agregar tags a algunos elementos para poder filtrarlos y categorizarlos (decí folksonomia y vas a sonar mucho mas hip!)<br/><br/>
+ahora, como filtro documentos por tag?<br/><br/>
+si puedo hacer eso, como filtro por tag y ordeno por fecha?<br/><br/>
+ya que estamos, no seria lindo poder filtrar por tag *y* por fecha?<br/><br/>
+vamos a resolver todos estos requerimientos con una simple vista<br/><br/>
+primero creamos la vista<br/><br/><pre>couchapp generate view by-tag
+</pre><br/>
+esto crea una vista en el directorio views llamado by-tag, este es un directorio que contiene dos archivos, map.js y reduce.js<br/><br/>
+en este caso vamos a usar solo map.js asi que borra reduce.js<br/><br/><pre>cd views/by-tag
+rm reduce.js
+</pre><br/>
+ahora edita map.js para que se vea como esto<br/><br/><div class="highlight"><pre><span class="kd">function</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">tags</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">doc</span><span class="p">.</span><span class="nx">tags</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">emit</span><span class="p">([</span><span class="nx">element</span><span class="p">,</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">created</span><span class="p">],</span> <span class="nx">doc</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><br/>
+por cada documento en la base de datos, vemos si tiene el atributo tags, si lo tiene, por cada tag en tags emitimos un documento cuya llave es un array con el tag y la fecha y cuyo valor es el documento en si.<br/><br/>
+ahora empujamos los cambios a couchdb<br/><br/><pre>couchapp push
+</pre><br/>
+para probar que funciona, crea algunos documentos con el un campo llamado tags que contenga un array de strings y otro campo llamado created que contenga el timestamp en el que el documento fue creado<br/><br/>
+si pongo esta URL http://localhost:5984/datos/_design/datos/_view/by-tag/ en mi navegador, obtengo algo así:<br/><br/><pre>{"total_rows":8,"offset":0,"rows":[
+{"id":"d6de7e9a63039dc1af500a40af0014d7","key":["bar",1288644825761],"value":{"_id":"d6de7e9a63039dc1af500a40af0014d7","_rev":"1-eab86fbc2b4c24f31e1d60dfdd762793","author":"wariano", "created":1288644825761, "tags":["test","foo","bar"], ...}},
+...
+]}
+</pre><br/>
+esto significa que la vista funciono, ahora para filtrar por tag la URL se va a poner un poco rara<br/><br/>
+vamos a usar filtros en la vista para filtrar solo los documentos con un tag especifico<br/><br/>
+http://localhost:5984/datos/_design/datos/_view/by-tag?descending=false&amp;startkey=["test", 0]&amp;endkey=["test", 9999999999999]<br/><br/>
+con este request decimos que queremos los resultados de la vista llamada by-tag, filtrando los documentos empezando con la llave ["test", 0] y terminando con la llave ["test", 9999999999999]. Esto significa que solo queremos los documentos con la llave "test" y que queremos todos los timestamps (por eso el numero enorme en endkey)<br/><br/>
+si queremos ordenar los tags en orden descendente deberíamos cambiar el orden de starkey y endkey: http://localhost:5984/datos/_design/datos/_view/by-tag?descending=true&amp;startkey=["test", 9999999999999]&amp;endkey=["test", 0]<br/><br/>
+podemos jugar con startkey y endkey para obtener rangos de tags o un tag en un periodo de tiempo especifico, por ejemplo: "cosas taggeadas con fun en los últimos dos días"<br/><br/>
+el código para hacer el request a couchdb desde javascript es el siguiente<br/><br/><div class="highlight"><pre><span class="nx">datos</span><span class="p">.</span><span class="nx">getByTag</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">descending</span><span class="p">,</span> <span class="nx">okCb</span><span class="p">,</span> <span class="nx">errorCb</span><span class="p">,</span> <span class="nx">startStamp</span><span class="p">,</span> <span class="nx">endStamp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tmp</span><span class="p">;</span>
+
+    <span class="nx">startStamp</span> <span class="o">=</span> <span class="nx">startStamp</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">endStamp</span> <span class="o">=</span> <span class="nx">endStamp</span> <span class="o">||</span> <span class="mi">9999999999999</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">descending</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">tmp</span> <span class="o">=</span> <span class="nx">endStamp</span><span class="p">;</span>
+        <span class="nx">endStamp</span> <span class="o">=</span> <span class="nx">startStamp</span><span class="p">;</span>
+        <span class="nx">startStamp</span> <span class="o">=</span> <span class="nx">tmp</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">$</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="nx">datos</span><span class="p">.</span><span class="nx">db</span><span class="p">).</span><span class="nx">view</span><span class="p">(</span><span class="s2">"datos/by-tag"</span><span class="p">,</span>
+        <span class="p">{</span><span class="s2">"descending"</span><span class="o">:</span> <span class="nx">descending</span><span class="p">,</span> <span class="s2">"startkey"</span><span class="o">:</span> <span class="p">[</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">startStamp</span><span class="p">],</span> <span class="s2">"endkey"</span><span class="o">:</span> <span class="p">[</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">endStamp</span><span class="p">],</span>
+            <span class="s2">"success"</span><span class="o">:</span> <span class="nx">okCb</span><span class="p">,</span> <span class="s2">"error"</span><span class="o">:</span> <span class="nx">errorCb</span><span class="p">});</span>
+<span class="p">};</span>
+</pre></div><br/>
+con esto tenes una forma de listar documentos por uno o mas campos, podes modificar este ejemplo un poco para listar por usuario o por otras cosas
+<div style="clear: both;"/>

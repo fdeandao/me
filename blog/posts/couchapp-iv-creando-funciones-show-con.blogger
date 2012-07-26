@@ -1,0 +1,29 @@
+
+<p>necesitamos mostrar una entidad en su propia pagina, para eso vamos a necesitar un template html con los valores del documento almacenado en la base de datos, un template es una buena herramienta para eso, veamos como hacerlo en nuestra couchapp</p><br/><p>primero creamos la funcion show, esta funcion es llamada para mostrar un documento en algun formato, en nuestro caso html</p><br/><pre># generamos la funcion show
+couchapp generate show dato
+# la editamos con un editor de texto
+vim shows/dato.js
+</pre><br/><p>en un principio vamos a ver este contenido</p><br/><br/><pre>function(doc, req) {  
+  
+}
+</pre><br/><p>reemplazamos por algo parecido a esto</p><br/><br/><pre>function(doc, req) {
+    if (doc !== null &amp;&amp; doc.name) {
+        var ddoc = this,
+            Mustache = require("vendor/couchapp/lib/mustache"),
+            path = require("vendor/couchapp/lib/path").init(req),
+            assetPath = path.asset();
+
+        provides("html", function() {
+            return Mustache.to_html(ddoc.templates.dato, {
+                assetPath: assetPath,
+                doc: doc
+            });
+        });
+    }
+    else {
+        return "not found";
+    }
+}
+</pre><br/><p>en el codigo controlamos que tenemos un documento, sino mostramos "not found", <br/>
+tambien creamos algunos objetos que nos ayudan y finalmente renderizamos el template pasandole algunos valores que seran usados dentro del template.</p><br/><p>mi template esta en templates/dato.html (por eso ddoc.templates.dato) y contiene un template mustache, mira <a href="http://mustache.github.com/">la documentacion de mustache</a> para mas informacion sobre el formato</p><br/><p>la url par acceder a esta funcion es [database]/_design/[app]/_show/[showname]/[docid] un ejemplo podria ser http://localhost:5984/datos/_design/datos/_show/dato/6bd97648d74961996c8f0d42b2005761</p>
+<div style="clear: both;"/>

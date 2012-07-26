@@ -1,0 +1,3 @@
+
+me llevo un rato encontrar este bug<br/><br/><pre><br/>2&gt; lists:suffix(".fn", io_lib:format("~p-~p-~p.~s", [1,2,3,"fn"])).<br/>false<br/>3&gt; lists:suffix(".fn", lists:flatten(io_lib:format("~p-~p-~p.~s", [1,2,3,"fn"]))).<br/>true<br/></pre><br/><br/>la razon es que<br/><br/><pre><br/>1&gt; io_lib:format("~p-~p-~p.~s", [1,2,3,"fn"]).<br/>["1",45,"2",45,"3",46,"fn"]<br/></pre><br/><br/>y no lo que uno esperaria<br/><br/><pre><br/>4&gt; lists:flatten(io_lib:format("~p-~p-~p.~s", [1,2,3,"fn"])).                     <br/>"1-2-3.fn"<br/></pre>
+<div style="clear: both;"/>

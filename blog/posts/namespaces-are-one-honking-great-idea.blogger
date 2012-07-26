@@ -1,0 +1,18 @@
+
+me puse en campania para hacer algo que venia pensando hace mucho, la patada inicial fue que al escribir una <a href="https://github.com/marianoguerra/jsonpath-scala">librería en scala</a> y tener que pensar un namespace, seguí la convención de java y escribí<br/><br/>
+package org.marianoguerra.jsonpath<br/><br/>
+y pensé, esta ocupado marianoguerra.org?<br/><br/>
+fui, mire, no estaba, desempolve mi bloqueada cuenta de paypal que resulta que tenia plata adentro, pague el dominio por 5 anios, manosee los DNSs por un rato y el resultado es el siguiente:<br/><br/><ul><li>mis imágenes en <a href="http://pics.marianoguerra.org/">pics.marianoguerra.org</a></li>
+<li>mi blog en <a href="http://blog.marianoguerra.org/">blog.marianoguerra.org</a></li>
+<li>mi pagina principal en <a href="http://marianoguerra.org/">marianoguerra.org</a> *</li>
+<li>mi mail (cuya url no debería interesarles) en <a href="http://mail.marianoguerra.org/">mail.marianoguerra.org </a></li>
+<ul><li>lo que hace que mi nuevo mail sea mariano <b>en</b> <a href="http://marianoguerra.org/">marianoguerra.org</a> **</li>
+</ul></ul>
+la razón es un poco de nioniada de tener un dominio en un TLD, tener urls simples y como reza el dicho:<br/><br/><blockquote class="tr_bq">
+Any problem in computer science can be solved with another layer of indirection. But that usually will create another problem.—<a href="http://en.wikipedia.org/wiki/David_Wheeler">David Wheeler</a></blockquote>
+<br/>
+lo cual me permite cambiarme de proveedor de hosting de imágenes, blog y mail sin tener que actualizar links*** y redireccionar gente.<br/><br/>
+ * la pagina principal es cualquiera, en algún momento la haré mejor.<br/>
+ ** voy a empezar un lento proceso para forzar a la gente a escribirme al nuevo, si querés agendar mi nuevo mail mandame un mail contándome lo que se cante :)<br/>
+ *** cosa que probablemente nunca haga, pero tengo pensado migrar mi blog a algo mas estático, quizás <a href="http://nikola.ralsina.com.ar/">nikola</a>, quizás alguna otra cosa hecha a mano.
+<div style="clear: both;"/>

@@ -1,0 +1,34 @@
+
+<p>you now have documents and to be in this century you decide to add tags to some elements so you can filter and categorize (say folksonomy and you will sound really hip!)</p><br/><p>now, how do I filter the documents by tag?</p><br/><p>if I can do that, how do I filter by tag and order by date?</p><br/><p>now that we are at it, wouldn't be nice to have a filter by tag *and* date?</p><br/><p>we will solve all this requirements with a simple view</p><br/><p>first we create the view</p><br/><pre>couchapp generate view by-tag
+</pre><br/><p>this creates a view in the views called by-tags, this is a directory that contains two files, map.js and reduce.js</p><br/><p>in this case we will only use the map.js file, so remove the reduce.js file</p><br/><pre>cd views/by-tag
+rm reduce.js
+</pre><br/><p>now edit the map.js file to look like this</p><br/><div class="highlight"><pre><span class="kd">function</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">doc</span><span class="p">.</span><span class="nx">tags</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">doc</span><span class="p">.</span><span class="nx">tags</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">emit</span><span class="p">([</span><span class="nx">element</span><span class="p">,</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">created</span><span class="p">],</span> <span class="nx">doc</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><br/><p>here for each document in the database we check if the document has the tags attribute and if it has the attribute, for each tag we emit a document that contains as key an array with the tag and timestamp when the document was created and as value the document itself</p><br/><p>now we push our changes to couchdb</p><br/><pre>couchapp push
+</pre><br/><p>to test that this works, create some documents with a field called tags that contains a list of strings and a field called created that contain the timestamp when the item was created</p><br/><p>if I put this URL http://localhost:5984/datos/_design/datos/_view/by-tag/ in my browser I get something like this</p><br/><pre>{"total_rows":8,"offset":0,"rows":[
+{"id":"d6de7e9a63039dc1af500a40af0014d7","key":["bar",1288644825761],"value":{"_id":"d6de7e9a63039dc1af500a40af0014d7","_rev":"1-eab86fbc2b4c24f31e1d60dfdd762793","author":"wariano", "created":1288644825761, "tags":["test","foo","bar"], ...}},
+...
+]}
+</pre><br/><p>this means the view worked, now to filter by tag the URL will get weird</p><br/><p>we will use filters in the view to filter only for a specific tag</p><br/><p>http://localhost:5984/datos/_design/datos/_view/by-tag?descending=false&amp;startkey=["test", 0]&amp;endkey=["test", 9999999999999]</p><br/><p>with this request we say that we want to get the result of the view called by-tag, filtering starting with the key ["test", 0] and ending with the key ["test", 9999999999999]. This means that we only want the documents with the key "test" and we want all the timestamps (that's why the huge number in the endkey</p><br/><p>if we want to sort the tags in descending order we should switch the start and endkey like this: http://localhost:5984/datos/_design/datos/_view/by-tag?descending=true&amp;startkey=["test", 9999999999999]&amp;endkey=["test", 0]</p><br/><p>we can play with startkey and endkey to get a range of tags or one tag in a specific period, for example, "things tagged fun in the last 2 days"</p><br/><p>the code to do the request to couchdb from javascript is the following</p><br/><div class="highlight"><pre><span class="nx">datos</span><span class="p">.</span><span class="nx">getByTag</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">descending</span><span class="p">,</span> <span class="nx">okCb</span><span class="p">,</span> <span class="nx">errorCb</span><span class="p">,</span> <span class="nx">startStamp</span><span class="p">,</span> <span class="nx">endStamp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tmp</span><span class="p">;</span>
+
+    <span class="nx">startStamp</span> <span class="o">=</span> <span class="nx">startStamp</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">endStamp</span> <span class="o">=</span> <span class="nx">endStamp</span> <span class="o">||</span> <span class="mi">9999999999999</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">descending</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">tmp</span> <span class="o">=</span> <span class="nx">endStamp</span><span class="p">;</span>
+        <span class="nx">endStamp</span> <span class="o">=</span> <span class="nx">startStamp</span><span class="p">;</span>
+        <span class="nx">startStamp</span> <span class="o">=</span> <span class="nx">tmp</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">$</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="nx">datos</span><span class="p">.</span><span class="nx">db</span><span class="p">).</span><span class="nx">view</span><span class="p">(</span><span class="s2">"datos/by-tag"</span><span class="p">,</span>
+        <span class="p">{</span><span class="s2">"descending"</span><span class="o">:</span> <span class="nx">descending</span><span class="p">,</span> <span class="s2">"startkey"</span><span class="o">:</span> <span class="p">[</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">startStamp</span><span class="p">],</span> <span class="s2">"endkey"</span><span class="o">:</span> <span class="p">[</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">endStamp</span><span class="p">],</span>
+            <span class="s2">"success"</span><span class="o">:</span> <span class="nx">okCb</span><span class="p">,</span> <span class="s2">"error"</span><span class="o">:</span> <span class="nx">errorCb</span><span class="p">});</span>
+<span class="p">};</span>
+</pre></div><br/>with this you have a way to list documents by one or more fields, you can modify this a little to list by users, or by some other thing
+<div style="clear: both;"/>

@@ -1,0 +1,21 @@
+
+para una cosa necesitaba agregar una columna con el timestamp a la salida de <a href="http://linuxcommand.org/man_pages/vmstat8.html">vmstat</a> por lo que necesitaba el codigo y el entorno para modificarlo y recompilarlo.<br/><br/>
+despues de un poco de busqueda resulto ser bastante facil.<br/><br/>
+# donde esta vmstat? <br/>
+$ which vmstat<br/>
+# quien provee vmstat?<br/>
+$ dpkg -S /usr/bin/vmstat<br/>
+# traeme las fuentes de procps <br/>
+$ apt-get source procps<br/>
+# traeme las dependencias para construir procps<br/>
+$ sudo apt-get build-dep procps<br/>
+# vamos al directorio <br/>
+$ cd procps-3.2.8/<br/>
+# edicion furiosa de código<br/>
+$ vim vmstat.c<br/>
+# compilamos el codigo<br/>
+make<br/>
+# probamos nuestra creacion<br/>
+$ vmstat -n 1 <br/><br/>
+y voila!
+<div style="clear: both;"/>

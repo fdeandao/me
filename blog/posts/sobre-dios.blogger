@@ -1,0 +1,4 @@
+
+Python 2.4.3 (#69, Mar 29 2006, 17:35:34) [MSC v.1310 32 bit (Intel)] on win32<br/>Type "help", "copyright", "credits" or "license" for more information.<br/>&gt;&gt;&gt; dios<br/>Traceback (most recent call last):<br/>  File "<stdin>", line 1, in ?<br/>NameError: name 'dios' is not defined<br/>&gt;&gt;&gt;<br/><br/>(?)<br/><br/>tags temporales: 3:04 am jueves estudiando aleman
+<div style="clear: both;"/>
+</stdin>

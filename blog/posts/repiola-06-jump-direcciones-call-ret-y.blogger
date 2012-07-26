@@ -1,0 +1,19 @@
+
+para darle un cierre a esta idea que tuve alguna vez, implemente lo que faltaba para considerar el proyecto "terminado", lo unico que puede llegar a faltar es UIs mas copadas (como guardar programas etc.)<br/><br/>
+en esta release agregue soporte para saltar a una direccion almacenada en un registro:<br/><br/><pre>set r2 2
+jmp r2
+</pre><br/>
+salta a la direccion 2<br/><br/>
+call y ret permiten simular rutinas, call empuja el instruction pointer al stack y salta al label especificado, ret saca la direccion del stack y salta a ella:<br/><br/><pre>jmp begin
+
+: donothing
+ret
+
+: begin
+call donothing
+</pre><br/>
+con estas features ya no hay muchas cosas que no se puedan hacer.<br/><br/>
+y para cerrar ahora cuando ejecutas un programa lo compila a bytecode y despues la maquina virtual ejecuta el bytecode directamente, hasta ahora las instrucciones eran compiladas a bytecode pero el manejo de los saltos era manejado por la clase Interpreter.<br/><br/>
+esto da una mejora de velocidad considerable para mi pobre celular (el mas barato con j2me :D)<br/><br/>
+en la pagina <a href="http://code.google.com/p/repiola/">http://code.google.com/p/repiola/</a> se encuentran los jars y documentacion de todas las instrucciones.
+<div style="clear: both;"/>

@@ -1,0 +1,74 @@
+
+siempre empiezo un modulo y empiezo a poner prints, pienso "tendría que usar logging", pero el hecho de no poder recordar como se configura un logger y tanta verbositud hace que siempre termine usando prints.<br/><br/>
+peor cuando tengo que cambiar a logging tengo que leer la documentación y termino haciendo copy paste del código de los ejemplos.<br/><br/>
+para eso cree un wrapper que me hace la vida mas simple en mis casos de uso simples.<br/><br/>
+pego acá parte del readme del modulo (en ingles por fiaca a traducirlo).<br/><br/>
+si les gusta el código esta acá:<br/><br/><a href="https://github.com/marianoguerra/doodles/tree/master/python">https://github.com/marianoguerra/doodles/tree/master/python </a><br/><br/>
+si ven algún error, problema o tienen alguna observación para hacer son bienvenidos, nunca termino de entender el modelo de logging ya sea en python o en java (el único que entiendo es console.log y console.error de js :D)<br/><br/>
+acá va un ejemplo de uso:<br/><br/><br/><br/><pre>import time&#13;
+import mlog&#13;
+&#13;
+# create a logger for the console with default logging level, default format&#13;
+# and default everything (but nice defaults)&#13;
+log = mlog.console()&#13;
+# log some stuff&#13;
+log.info("hey!")&#13;
+log.warn("warning...")&#13;
+log.error("something went wrong! (no it didn't just testing log.error)")&#13;
+&#13;
+# add a file handler to the logger we where using (see how I pass the logger?)&#13;
+# if I don't pass the logger instance I get a brand new logger that is&#13;
+# unrelated to the last one, but in this case I add a handler to the one I have&#13;
+mlog.file("mlog.log", logger=log)&#13;
+&#13;
+# log some more stuff&#13;
+log.debug("I'm on a file now!")&#13;
+log.info("of course I'm on both")&#13;
+&#13;
+# who wants file loggers without rotation?&#13;
+# I give you a nice notation to specify the rotation policy&#13;
+# add this handler to the logger I already have&#13;
+mlog.file("every-minute.log", when=mlog.every(1, mlog.MINUTE), logger=log)&#13;
+&#13;
+log.info("im on a file that rotates every minute")&#13;
+&#13;
+# give time so it rotates&#13;
+time.sleep(65)&#13;
+&#13;
+log.info("65 seconds passed!")&#13;
+&#13;
+# this is a new logger not related with the others&#13;
+# change the module name so it's not in the same hierarchy&#13;
+# as the other ones&#13;
+other_log = mlog.file("unrelated.log", name="test_mlog_1")&#13;
+&#13;
+# log something&#13;
+other_log.info("unrelated logger is unrelated")</pre><pre/>running it produces the following output (and files):<br/><br/><pre>$ python test_mlog.py&#13;
+[2011-08-12 11:44:30,491] test_mlog INFO: hey!&#13;
+[2011-08-12 11:44:30,491] test_mlog WARNING: warning...&#13;
+[2011-08-12 11:44:30,491] test_mlog ERROR: something went wrong! (no it didn't just testing log.error)&#13;
+[2011-08-12 11:44:30,492] test_mlog INFO: of course I'm on both&#13;
+[2011-08-12 11:44:30,492] test_mlog INFO: im on a file that rotates every minute&#13;
+[2011-08-12 11:45:35,491] test_mlog INFO: 65 seconds passed!&#13;
+&#13;
+$ ls&#13;
+README.rst                              mlog.log                                test_mlog.py&#13;
+every-minute.log                        mlog.py                                 unrelated.log&#13;
+every-minute.log.2011-08-12_11-44       mlog.pyc&#13;
+&#13;
+$ cat mlog.log&#13;
+[2011-08-12 11:44:30,491] test_mlog DEBUG: I'm on a file now!&#13;
+[2011-08-12 11:44:30,492] test_mlog INFO: of course I'm on both&#13;
+[2011-08-12 11:44:30,492] test_mlog INFO: im on a file that rotates every minute&#13;
+[2011-08-12 11:45:35,491] test_mlog INFO: 65 seconds passed!&#13;
+&#13;
+$ cat every-minute.log&#13;
+[2011-08-12 11:45:35,491] test_mlog INFO: 65 seconds passed!&#13;
+&#13;
+$ cat every-minute.log.2011-08-12_11-44&#13;
+[2011-08-12 11:44:30,492] test_mlog INFO: im on a file that rotates every minute&#13;
+&#13;
+$ cat unrelated.log&#13;
+[2011-08-12 11:45:35,495] test_mlog_1 INFO: unrelated logger is unrelated&#13;
+</pre>
+<div style="clear: both;"/>

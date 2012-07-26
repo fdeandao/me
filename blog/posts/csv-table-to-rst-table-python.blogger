@@ -1,0 +1,40 @@
+
+<b>update</b>: roberto alsina sabe! :D hay una directiva no muy conocida en reST que permite hacer lo que hice (<a href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#id1">csv-table</a>), y anda muy bonito en el wiki de github, dejo el codigo abajo porque es codigo python muy bonito :P<br/><br/>
+problema, documentar estructura de tablas sql en algun lado<br/><br/>
+preferiblemente:<br/><br/>
+  * formato editable con editor de texto<br/>
+  * versionable<br/>
+  * facil de escribir y bonito de leer<br/><br/>
+la forma mas facil de escribir es algo asi como un csv, pero la forma mas facil de leer es algun formato tabular, el wiki de github soporta varios markup pero el markup para tablas siempre es un perno, asi que elegi escribir un conversor de csv a tablas restructured text.<br/><br/>
+el resultado esta aca<br/><br/><script src="https://gist.github.com/1137302.js">&#13;
+ &#13;
+</script><br/><br/>
+ejemplo:<br/><br/><pre>$ cat personas.csv                                           &#13;
+dni, nombre, apellido, observacion&#13;
+1, bob, esponja, vive en una pinia debajo del mar&#13;
+2, patricio, estrella, amigo de bob que perno seria tener que escribir el markup para una columna tan larga no?&#13;
+$ python csv2table.py personas.csv &gt; tablas.rst                                    &#13;
+$ echo &gt;&gt; tablas.rst&#13;
+$ python csv2table.py personas.csv "Personas con titulo (la tabla no las personas)" &gt;&gt; tablas.rst&#13;
+$ rst2html tablas.rst &gt; tablas.html&#13;
+</pre><br/>
+resultado rst (si, rompi todos los estilos de la tierra):<br/><br/><pre>=== ========= ========= ========================================================================================= &#13;
+dni  nombre    apellido  observacion                                                                              &#13;
+=== ========= ========= ========================================================================================= &#13;
+1    bob       esponja   vive en una pinia debajo del mar                                                         &#13;
+2    patricio  estrella  amigo de bob que perno seria tener que escribir el markup para una columna tan larga no? &#13;
+=== ========= ========= ========================================================================================= &#13;
+&#13;
+Personas con titulo (la tabla no las personas)&#13;
+==============================================&#13;
+&#13;
+=== ========= ========= ========================================================================================= &#13;
+dni  nombre    apellido  observacion                                                                              &#13;
+=== ========= ========= ========================================================================================= &#13;
+1    bob       esponja   vive en una pinia debajo del mar                                                         &#13;
+2    patricio  estrella  amigo de bob que perno seria tener que escribir el markup para una columna tan larga no? &#13;
+=== ========= ========= ========================================================================================= &#13;
+&#13;
+</pre><br/>
+resultado html:<br/><br/><table border="1" class="docutils"><colgroup><col width="3%"/><col width="8%"/><col width="8%"/><col width="81%"/></colgroup><thead valign="bottom"><tr><th class="head">dni</th> <th class="head">nombre</th> <th class="head">apellido</th> <th class="head">observacion</th> </tr></thead><tbody valign="top"><tr><td>1</td> <td>bob</td> <td>esponja</td> <td>vive en una pinia debajo del mar</td> </tr><tr><td>2</td> <td>patricio</td> <td>estrella</td> <td>amigo de bob que perno seria tener que escribir el markup para una columna tan larga no?</td> </tr></tbody></table><div class="section" id="personas-con-titulo-la-tabla-no-las-personas"><h1>Personas con titulo (la tabla no las personas)</h1><table border="1" class="docutils"><colgroup><col width="3%"/><col width="8%"/><col width="8%"/><col width="81%"/></colgroup><thead valign="bottom"><tr><th class="head">dni</th> <th class="head">nombre</th> <th class="head">apellido</th> <th class="head">observacion</th> </tr></thead><tbody valign="top"><tr><td>1</td> <td>bob</td> <td>esponja</td> <td>vive en una pinia debajo del mar</td> </tr><tr><td>2</td> <td>patricio</td> <td>estrella</td> <td>amigo de bob que perno seria tener que escribir el markup para una columna tan larga no?</td> </tr></tbody></table></div>
+<div style="clear: both;"/>

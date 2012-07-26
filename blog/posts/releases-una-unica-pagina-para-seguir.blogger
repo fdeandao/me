@@ -1,0 +1,8 @@
+
+se me ocurrió ayer (mejor dicho lo necesite ayer), no lo encontré y lo hice.<br/><br/>
+básicamente es un script que periodicamente chequea en los proyectos de una lista* las versiones y si se actualizaron las agrega a una lista y genera un feed atom y rss, tambien provee una pagina web para ver los ultimos 100 updates, con links y posibilidad de ver detalles y comentar en cada release individual.<br/><br/>
+todo sin backend, solo generacion de archivos estaticos y javascript en el cliente.<br/><br/>
+la pagina esta acá: <a href="http://marianoguerra.github.com/releases/">releases!</a><br/><br/>
+si querés que agregue alguna librería avisame por algún lado.<br/><br/>
+* proyectos que tienen un archivo package.json
+<div style="clear: both;"/>

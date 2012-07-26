@@ -1,0 +1,3 @@
+
+si haces requests POST con jquery $.ajax y no seteas data (probablemente lo estas haciendo como un GET encubierto para que el browser no se crea lo suficientemente vivo para devolverte lo que cacheo la ultima vez), setea data: "" porque sino chrome se comporta de formas raras.
+<div style="clear: both;"/>

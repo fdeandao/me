@@ -1,0 +1,24 @@
+
+<p>we will start our couchapp setting up the environment, for that we will install couchdb and couchapp</p><br/><pre># install couchdb and python modules to install other modules
+sudo apt-get install python-setuptools couchdb
+# download pip
+curl -O http://python-distribute.org/distribute_setup.py
+sudo python distribute_setup.py
+sudo easy_install pip
+# install couchapp
+sudo pip install couchapp
+</pre><br/><p>now that we have couchapp we will generate our project, we will call it "datos"</p><br/><pre>couchapp generate datos
+cd datos
+# edit the couchapprc file
+vim .couchapprc
+</pre><br/><p>the .couchapprc file contains the targets where we can deploy our application, let's define the default target</p><br/><pre>{"env": {
+  "default": {
+   "db": "http://localhost:5984/datos"
+  }
+ }
+}
+</pre><br/><p>save the content and run</p><br/><pre>couchapp push
+</pre><br/><p>it should display something like the following:</p><br/><pre>2010-10-22 10:21:10 [INFO] Visit your CouchApp here:
+http://localhost:5984/datos/_design/datos/index.html
+</pre><br/><p>now go to that site with your browser, you should see a demo page.</p>
+<div style="clear: both;"/>

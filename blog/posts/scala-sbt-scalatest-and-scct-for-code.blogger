@@ -1,0 +1,51 @@
+
+<div class="document" id="scala-sbt-scalatest-and-scct-for-code-coverage-testing">
+<h1 class="title">
+Scala, sbt, scalatest and scct for code coverage testing</h1>
+simple guide on how to setup a scala project using sbt and sbt-scct plugin
+to have code coverage on tests using scalatests.<br/><br/>
+the code for this is at my repo here:<br/><br/><a href="https://github.com/marianoguerra/me/tree/master/code/scala/sbt-scalatest-scct">https://github.com/marianoguerra/me/tree/master/code/scala/sbt-scalatest-scct </a><br/><div class="section" id="ingredients">
+<h1>
+ingredients</h1>
+<ul class="simple"><li>scala 2.9.1</li>
+<li>sbt 0.11.2</li>
+<li>sbt-scct 0.2</li>
+<li>scalatest 1.6.1</li>
+</ul></div>
+<div class="section" id="how-to">
+<h1>
+how to</h1>
+create a file called build.sbt if you don't have one already, you need to add
+the following parameters (you can use build.sbt as a starting point)<br/>
+scala version:<br/><br/><pre class="literal-block">scalaVersion := "2.9.1"
+</pre>
+<br/>
+load scct settings:<br/><br/><pre class="literal-block">seq(ScctPlugin.scctSettings: _*)
+</pre>
+<br/>
+add scalatest to your dependencies:<br/><br/><pre class="literal-block">libraryDependencies ++= Seq(
+    "org.scalatest" % "scalatest_2.9.0" % "1.6.1" % "test"
+)
+</pre>
+<br/>
+create a file called project/plugins.sbt if you don't have one already and
+add the following:<br/><br/><pre class="literal-block">resolvers += Classpaths.typesafeResolver
+
+addSbtPlugin("ch.craven" % "scct-plugin" % "0.2")
+
+resolvers ++= Seq(
+        "scct-repo" at "http://dimbleby.github.com/maven",
+        Resolver.url("Typesafe repository", new java.net.URL("http://typesafe.artifactoryonline.com/typesafe/ivy-releases/"))(Resolver.defaultIvyPatterns)
+</pre>
+<br/>
+then create some tests like the one under src/test/scala/ar/com/marianoguerra/CalcSpec.scala<br/><br/>
+then start sbt and run:<br/><br/><pre class="literal-block">coverage:doc
+</pre>
+<br/>
+after the test ran open the report with your browser:<br/><br/><pre class="literal-block">firefox target/scala-2.9.1/coverage-report/index.html
+</pre>
+<br/>
+and you are done!<br/><br/>
+note that I left one if branch without testing so you can see how it looks.</div>
+</div>
+<div style="clear: both;"/>

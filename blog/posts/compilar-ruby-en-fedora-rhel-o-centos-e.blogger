@@ -1,0 +1,39 @@
+
+estuve ayudando a alguien a instalar esto y me parecio util dejarlo documentado<br/><br/>
+disclaimer: no programo en ruby ni en rails (tampoco uso fedora) :D<br/><br/><h2>estableciendo el entorno</h2><br/><pre>su
+yum install gcc make binutils wget openssl-devel zlib zlib-devel automake readline-devel sqlite-devel
+exit
+</pre><br/><h2>compilando e instalando</h2><br/><pre>cd
+mkdir ruby
+cd ruby
+wget ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p330.tar.gz
+tar -xzf ruby-1.8.7-p330.tar.gz
+cd ruby-1.8.7-p330
+./configure --prefix=/opt/ruby-1.8.7-p330 --enable-pthread --enable-shared --enable-openssl --enable-readline --enable-zlib
+make
+
+su
+make install
+exit
+</pre><br/><h2>facilitandonos la vida y probando que todo ande</h2><br/><pre>echo "export PATH=/opt/ruby-1.8.7-p330/bin/:$PATH" &gt;&gt; ~/.bashrc
+bash
+# aca deberia andar
+irb
+</pre><br/><h2>instalando gems y rails</h2><br/><pre>cd ..
+wget http://rubyforge.org/frs/download.php/73779/rubygems-1.4.1.tgz
+tar -xzf rubygems-1.4.1.tgz
+cd rubygems-1.4.1
+su
+ruby setup.rb
+gem install rails --include-dependencies
+exit
+</pre><br/><h2>probando que anda</h2><br/><pre>rails new testapp
+cd testapp
+# por alguna razon tuve que hacer esto aca
+su
+bundle install
+exit
+rails server
+</pre><br/>
+y visitando <a href="http://0.0.0.0:3000/">http://0.0.0.0:3000/</a> en el browser me salio la pagina de bienvenida.
+<div style="clear: both;"/>

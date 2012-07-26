@@ -1,0 +1,32 @@
+
+se te acabaron las conversaciones en una fiesta?<br/><br/>
+querés impresionar a tus amigos con tus conocimientos detallados de cuando usar "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY" y "OPTIONAL"?<br/><br/>
+querés interrumpir a alguien para decirle "<a href="http://tirania.org/blog/archive/2011/Feb-17.html">well actually</a>" y demostrarle que vos sabes mas de algo que el?<br/><br/>
+entonces este post es para vos!<br/><br/>
+ya no tenes que googlear un RFC o leerlo online, la  solucion esta a un apt-get de distacia!<br/><br/><br/><pre>sudo apt-get install doc-rfc{,-experimental,-informational,-misc,-old-std,-others,-std,-std-proposed} xml2rfc
+</pre>
+<br/>
+y a leer!<br/><br/><pre>zmore /usr/share/doc/RFC/informational/rfc2324.txt.gz
+</pre>
+<br/>
+si la razón de todo esto es leer <a href="https://github.com/garycourt/json-schema/blob/master/draft-zyp-json-schema-04.xml">un rfc</a> que esta en xml (porque todo lo que un humano lee y edita tiene que estar en xml, porque es fácil para los humanos, hagamos las cosas fáciles para las computadoras y difíciles para los humanos)
+
+entonces:<br/><br/><pre>xml2rfc draft-zyp-json-schema-04.xml
+</pre>
+<br/>
+y despues de verlo fallar con el error:<br/><br/><pre>ml2rfc: error: I can't synthesize a date in 2010 around input line 24
+key not known
+    while executing
+"::${basename}::pkgconfig get scriptdir,runtime"
+</pre>
+<br/>
+y pelear y googlear, cambio la linea por:<br/><br/><pre> &lt;date year="2012" month="June" day="14"/&gt;
+</pre>
+<br/>
+y anda.
+
+ahora a leer el bendito rfc.<br/><br/>
+para evitar que la gran audiencia de este blog (?) vaya a lanata a decir "queremos preguntar", aca un corto FAQ:<br/><br/><b>porque demonios? </b><br/><br/>
+porque estoy haciendo <a href="http://marianoguerra.github.com/json-edit/">un proyecto</a> y quiero estar al dia con la ultima version del draft que va a salir "pronto".<br/><br/><b>que odias ademas de xml? </b><br/><br/>
+la pagina de edición de posts de blogger.
+<div style="clear: both;"/>
