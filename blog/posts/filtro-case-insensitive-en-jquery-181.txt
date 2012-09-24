@@ -1,0 +1,20 @@
+y si, el que usa una api interna ve un release nuevo y llora...
+
+hola! soy mariano guerra, tal vez me recuerden de posts autodeprecados como `contains case insensitive en jquery 1.8 (:containsi)`_
+
+.. _`contains case insensitive en jquery 1.8 (:containsi)`: http://www.marianoguerra.org/posts/contains-case-insensitive-en-jquery-18-containsi.html
+
+pero ahora parece que estabilizaron y documentaron la api para registrar selectores
+propios asi que esto tendria que durar un poco mas...
+
+https://github.com/jquery/sizzle/wiki/Sizzle-Documentation#wiki-pseudo-selectors
+
+por lo que ahora el baile magico para que ande es:
+
+.. code-block:: javascript
+
+        $.expr[":"].containsi = $.expr.createPseudo(function (selector, context, isXml) {
+            return function (elem) {
+                return (elem.textContent || elem.innerText || $.text(elem)).toLowerCase().indexOf(selector.toLowerCase()) > -1;
+            };
+        });

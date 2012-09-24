@@ -131,7 +131,7 @@ settings = {
 chatnets = { 
   Freenode = { 
     type = "IRC"; 
-    autosendcmd = "/msg NickServ identify m(k)g3; wait -Freenode 2000";
+    autosendcmd = "/msg NickServ identify password_here; wait -Freenode 2000";
   }; 
 };
 

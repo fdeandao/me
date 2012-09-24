@@ -1,0 +1,93 @@
+Fiesta del vino en Colmar
+=========================
+
+.. figure:: ../galleries/alsacia/IMG_4353.JPG
+	:width: 250pt
+	:align: center
+
+	cordoba entre los grandes (?)
+
+aunque los posts están pegados este paso una o dos semanas despues del otro.
+
+	pato (medio en joda): vamos a la fiesta del vino en Colmar_ [#]_
+
+	yo: vamo'
+
+listo, así se resolvió.
+
+.. figure:: ../galleries/alsacia/IMG_4354.JPG
+	:width: 250pt
+	:align: center
+
+	llegados a colmar
+
+el viaje fue gentilmente proveído por una pareja de costarricenses que conocimos
+durante la semana en un recital de calle 13 [#]_ en Karlsruhe_ [#]_ [#]_ en el cual pude
+experimentar lo que es viajar a 260Km/h por una autobahn por varios kilómetros.
+
+.. figure:: ../galleries/alsacia/IMG_4355.JPG
+	:width: 250pt
+	:align: center
+
+	joda "french style"
+
+dada la velocidad del conductor llegamos rápido al destino donde nos encontramos
+con una especie de feria donde según palabras de un local "los duenios de los
+viniedos cercanos se deshacen de lo que le queda de stock y aprovechan para comer
+y comprar maquinaria/herramientas/cosas".
+
+.. figure:: ../galleries/alsacia/IMG_4388.JPG
+	:width: 250pt
+	:align: center
+
+	joda "french style" II :P
+
+el local nos dijo que lo que se hace ahí es tomar vino por etapa, de menos a
+mas dulce y que al menos teníamos que tomar 5 variedades.
+
+.. figure:: ../galleries/alsacia/IMG_4391.JPG
+	:width: 250pt
+	:align: center
+
+	siesta "french style" (?)
+
+fáciles de convencer empezamos con la versión local del champaigne llamado algo
+así como Crémant y seguimos con variedades de vino que terminaron en uno que
+era *muy* dulce.
+
+.. figure:: ../galleries/alsacia/IMG_4396.JPG
+	:width: 250pt
+	:align: center
+
+	desayuno "french style" (bue, se esta poniendo denso el vago)
+
+entre medio comimos, caminamos etc etc.
+
+.. figure:: ../galleries/alsacia/IMG_4410.JPG
+	:width: 250pt
+	:align: center
+
+a la salida fuimos a dormir a una ciudad cercana llamada Thann_, donde a la maniana
+siguiente desayunamos para luego partir a la montania mas alta de Alsacia_ donde
+almorzamos `Tarte Flambee`_ y caminamos para luego cruzar a Alemania para tomar
+el tren de regreso.
+
+.. figure:: ../galleries/alsacia/IMG_4426.JPG
+	:width: 250pt
+	:align: center
+
+	almuerzo
+
+mas fotos en el `Album de Alsacia`_
+
+.. _Colmar: https://en.wikipedia.org/wiki/Colmar
+.. _Karlsruhe: https://en.wikipedia.org/wiki/Karlsruhe
+.. _Thann: https://en.wikipedia.org/wiki/Thann,_Haut-Rhin
+.. _Alsacia: https://en.wikipedia.org/wiki/Alsace
+.. _`Tarte Flambee`: https://en.wikipedia.org/wiki/Tarte_flamb%C3%A9e
+.. _`Album de Alsacia`: ../galleries/alsacia/
+
+.. [#] tierra de origen de la estatua de la libertad
+.. [#] donde vine a la beca hace varios anios
+.. [#] si, ahora que aprendí a poner links y referencias en rst te voy a cansar :D
+.. [#] ah, si, fiaca de escribir el post, tl;dr: no escucho mucho calle 13 pero estuvo bueno

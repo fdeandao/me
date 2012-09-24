@@ -39,6 +39,7 @@ set nonumber
 au BufRead,BufNewFile *py,*pyw,*.php,*.c,*.h,*js,*.json,*.erl,*.fn,*.ifn,*.yrl,*.xrl set tabstop=4
 au BufRead,BufNewFile *html,*xul,*htm,*xml,*xhtml,*css set tabstop=1 sw=1 expandtab 
 au BufRead,BufNewFile *.scala,*.k set tabstop=2 sw=2 expandtab 
+au BufRead,BufNewFile *.htc set tabstop=8 sw=8 noexpandtab 
 
 au BufRead,BufNewFile *.fn source ~/.vim/syntax/efene.vim
 au BufRead,BufNewFile *.ifn source ~/.vim/syntax/efene.vim
@@ -166,4 +167,23 @@ call pathogen#infect()
 
 set ttyfast
 
-let g:syntastic_python_checker = 'pyflakes'
+let g:syntastic_python_checker = 'pylint'
+
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+
+let g:notmuch_signature = ['']
+let g:notmuch_sendmail = '/usr/bin/esmtp'
+
+syntax enable
+
+let g:jsbeautify = {'indent_size': 4, 'indent_char': ' '}
+let g:htmlbeautify = {'indent_size': 2, 'indent_char': ' ', 'max_char': 78, 'brace_style': 'expand', 'unformatted': ['a', 'sub', 'sup', 'b', 'i', 'u']}
+let g:cssbeautify = {'indent_size': 2, 'indent_char': ' '}
+let g:jsbeautify_engine = "node"
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>

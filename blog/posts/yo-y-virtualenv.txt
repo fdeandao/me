@@ -1,0 +1,30 @@
+
+aca van algunas notas de mi primer uso de virtualenv
+
+.. note::
+
+	no esperes mas que fragmentos, comandos, notas etc.
+
+creo el directorio de la aplicacion::
+
+	mkdir chachara
+	cd chachara
+
+inicio el virtualenv usando distribute::
+
+	virtualenv --distribute chachara
+	cd chachara
+
+activamos el virtualenv::
+
+	source bin/activate
+
+instalo lo que me hace falta::
+
+	pip install flask
+
+si haces una listita de todos los paquetes que necesitas y los queres instalar
+en el directorio donde esta el codigo (por ejemplo si lo queres deployear en
+algun lugar autocontenido como google app engine) usa este comando::
+
+        pip install --ignore-installed -t . -r requirements.txt

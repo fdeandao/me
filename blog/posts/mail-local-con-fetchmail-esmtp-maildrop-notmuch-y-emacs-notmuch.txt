@@ -1,0 +1,96 @@
+
+esto es un brain dump de lo que recuerdo que hice ya que en el medio probe con
+cosas que despues borre como msmtp, procmail y algunas otras cosas mas.
+
+.. note::
+
+	estas instrucciones son para gmail pero podrian andar en cualquier lado
+
+donde pongo **tuusuario** es tu usuario de gmail
+
+donde pongo **nombreusuariolocal** es el usuario de tu maquina
+
+primero hay que instalar los paquetes que necesitamos::
+
+	sudo apt-get install esmtp notmuch-emacs fetchmail maildrop
+
+configuramos esmtp en ~/.esmtprc::
+
+	identity tuusuario@gmail.com
+		hostname smtp.gmail.com:587
+		username "tuusuario"
+		password "tucontrasenia"
+		starttls required
+
+configuramos fetchmail en ~/.fetchmailrc::
+
+	set postmaster "nombreusuariolocal"
+	set bouncemail
+	set no spambounce
+	set softbounce
+	set properties ""
+	set logfile /home/nombreusuariolocal/.fetchmail.log
+	poll pop.gmail.com with proto POP3 and options no dns
+	       user 'tuusuario' there with password 'tucontrasenia' is 'nombreusuariolocal' here options keep ssl mda '/usr/bin/maildrop'
+
+configuramos maildrop en ~/.mailfilter::
+
+	DEFAULT="$HOME/Maildir"
+
+configuramos notmuch::
+
+	notmuch setup
+
+lo mas importante en el paso anterior es que le digas que el path es /home/nombreusuariolocal/Maildir
+
+creamos el directorio donde va a ir el mail::
+
+	cd
+	maildirmake Maildir
+
+agregamos certificados para hacer andar starttls en esmtp::
+
+	mkdir ~/.authenticate
+	chmod 0700 ~/.authenticate
+	wget http://curl.haxx.se/ca/cacert.pem
+	mv cacert.pem ~/.authenticate/ca.pem
+	chmod 0600 ~/.authenticate/ca.pem
+
+en tu emacsrc en ~/.emacs agrega esta linea para que carge notmuch::
+
+	(autoload 'notmuch "notmuch" "notmuch mail" t)
+
+fetcheamos los mails::
+
+	fetchmail -v
+
+.. note::
+
+	mira la salida del comando anterior para estar seguro que anduvo
+
+le decimos a notmuch que indexe::
+
+	notmuch new
+
+cuando estas seguro que anda podes agregarlo para que fetchee automaticamente
+con cron::
+
+	crontab -e
+
+agrega esta linea::
+
+	0 * * * * fetchmail && notmuch new 
+
+cambia la expresion para que fetchee cada cuanto te parezca.
+
+ahora cuando quieras revisar el mail con emacs podes hacerlo con::
+
+	emacs -f notmuch
+
+apreta *?* para ver la ayuda (yo no se nada de emacs y aun asi es muy facil de usar)
+
+otras opciones para usar notmuch es con vim, mutt o desde la consola, pero como
+Chipaca me dijo que los desarrolladores de notmuch usan la version de emacs y
+andaba buscando una excusa para aprender a usarlo que mejor que esta :)
+
+como nota final, gracias a Chipaca y Styxman por ayudarme con el setup!

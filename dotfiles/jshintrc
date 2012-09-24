@@ -5,14 +5,14 @@
 
 
     // Predefined globals whom JSHint will ignore.
-    "browser"       : true,   // Standard browser globals e.g. `window`, `document`.
+    "browser"       : false,   // Standard browser globals e.g. `window`, `document`.
 
     "node"          : false,
     "rhino"         : false,
     "couch"         : false,
-    "wsh"           : true,   // Windows Scripting Host.
+    "wsh"           : false,   // Windows Scripting Host.
 
-    "jquery"        : true,
+    "jquery"        : false,
     "prototypejs"   : false,
     "mootools"      : false,
     "dojo"          : false,
@@ -26,7 +26,7 @@
 
     // Development.
     "debug"         : false,  // Allow debugger statements e.g. browser breakpoints.
-    "devel"         : true,   // Allow developments statements e.g. `console.log();`.
+    "devel"         : false,   // Allow developments statements e.g. `console.log();`.
 
 
     // ECMAScript 5.
@@ -39,10 +39,10 @@
     "asi"           : false,  // Tolerate Automatic Semicolon Insertion (no semicolons).
     "laxbreak"      : true,   // Tolerate unsafe line breaks e.g. `return [\n] x` without semicolons.
     "bitwise"       : true,   // Prohibit bitwise operators (&, |, ^, etc.).
-    "boss"          : true,  // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
+    "boss"          : false,  // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
     "curly"         : true,   // Require {} for every new block or scope.
     "eqeqeq"        : true,   // Require triple equals i.e. `===`.
-    "eqnull"        : true,  // Tolerate use of `== null`.
+    "eqnull"        : false,  // Tolerate use of `== null`.
     "evil"          : false,  // Tolerate use of `eval`.
     "expr"          : false,  // Tolerate `ExpressionStatement` as Programs.
     "forin"         : false,  // Tolerate `for in` loops without `hasOwnPrototype`.
@@ -50,7 +50,7 @@
     "latedef"       : true,   // Prohipit variable use before definition.
     "loopfunc"      : false,  // Allow functions to be defined within loops.
     "noarg"         : true,   // Prohibit use of `arguments.caller` and `arguments.callee`.
-    "regexp"        : true,   // Prohibit `.` and `[^...]` in regular expressions.
+    "regexp"        : false,  // Prohibit `.` and `[^...]` in regular expressions.
     "regexdash"     : false,  // Tolerate unescaped last dash i.e. `[-...]`.
     "scripturl"     : true,   // Tolerate script-targeted URLs.
     "shadow"        : false,  // Allows re-define variables later in code e.g. `var x=1; x=2;`.

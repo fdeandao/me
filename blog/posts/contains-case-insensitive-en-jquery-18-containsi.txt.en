@@ -1,0 +1,28 @@
+
+say you want to do some filtering based on the text content of some nodes,
+in that case you would use `:contains`_
+
+but what if you want it to be case insensitive?
+
+soon after searching you will find this `jquery issue`_ and copy and paste
+code from 3 years ago to realize that it breaks in jquery >= 1.8
+
+then you will use this version:
+
+.. code-block:: javascript
+
+	function jqueryContainsI(text) {
+	    return function (elem) {
+		return (elem.textContent || elem.innerText || $.text(elem)).toLowerCase().indexOf(text.toLowerCase()) > -1;
+	    };
+	}
+
+	jqueryContainsI.sizzleFilter = true;
+
+	// add case insensitive :contains filter called :containsi (see the last i)
+	$.extend($.expr[':'], {
+	    'containsi': jqueryContainsI
+	});
+
+.. _`:contains`: http://api.jquery.com/contains-selector/
+.. _`jquery issue`: http://bugs.jquery.com/ticket/278

@@ -1,0 +1,9 @@
+[user]
+	name = Mariano Guerra
+	email = luismarianoguerra@gmail.com
+[core]
+	editor = vim
+
+[credential "https://github.com"]
+	username = marianoguerra
+

@@ -9,14 +9,14 @@ require("naughty")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/home/mariano/src/me/awesome.theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "lxterminal"
+terminal = "gnome-terminal -e \"tmux\""
 browser = "firefox"
 filebrowser = "nautilus --no-desktop"
-halt = "beesu halt"
-im = terminal .. " -e ~/dev/emesene/emesene/emesene"
+halt = "gksu halt"
+im = terminal .. " -e ~/src/emesene/emesene/emesene"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -211,6 +211,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "b", function () awful.util.spawn(browser) end),
     awful.key({ modkey,           }, "f", function () awful.util.spawn(filebrowser) end),
+    awful.key({ modkey,           }, "t", function () awful.util.spawn("mpc toggle") end),
+    awful.key({ modkey,           }, ".", function () awful.util.spawn("mpc next") end),
+    awful.key({ modkey,           }, ",", function () awful.util.spawn("mpc prev") end),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
@@ -318,8 +321,6 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
@@ -360,3 +361,9 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- }}}
 
 awful.util.spawn("xmodmap ~/.Xmodmap")
+awful.util.spawn_with_shell("gnome-settings-daemon")
+awful.util.spawn_with_shell("nm-applet")
+awful.util.spawn_with_shell("gnome-power-manager")
+awful.util.spawn_with_shell("gnome-volume-manager")
+awful.util.spawn_with_shell("conky")
+

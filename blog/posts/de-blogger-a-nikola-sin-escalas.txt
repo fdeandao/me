@@ -1,0 +1,135 @@
+
+lo prometido es deuda, acá va una breve descripción de como hice para portar
+6 anios de blog en blogger a nikola.
+
+.. note::
+
+	probablemente requiera adaptación y no es una guiá paso a paso, si
+	tenes problemas comenta y te doy una mano.
+
+	(esto lo hice para poder usar un admonition y seguir confirmando
+	que nikola/rst son muy grosos)
+
+lo primero que hay que hacer es traer el listado de posts de tu blog de blogger,
+para eso vamos a usar una herramienta de linea de comandos que google provee
+para interactuar con varios de sus servicios llamada `googlecl <http://code.google.com/p/googlecl/>`_
+
+después de instalarla corremos::
+
+	google blogger list --blog "titulo de tu blog aca" > posts
+
+ahí tenemos un listado de los posts del blog que vamos a usar después.
+
+creamos un directorio donde van a ir los posts y los metadatos::
+
+	mkdir htmls
+
+después usamos un script como el siguiente (muy hackoso)
+
+esta escrito en python3 (si, python 3) y usa muchas librerías que facilitan
+la vida, entre ellas isodate requests y pyquery.
+
+acá esta el código que yo use, no lo usen para evaluar mis habilidades de
+programador :P
+
+.. code-block:: python
+
+	import sys
+	import csv
+	import time
+
+	from pyquery import PyQuery as pq
+	import requests
+
+	import isodate
+
+	POSTS_PATH = sys.argv[1]
+	print("processing posts from", POSTS_PATH)
+
+	with open(POSTS_PATH) as handle:
+	    reader = csv.reader(handle)
+
+	    print("reader", reader)
+	    for post in reader:
+		title, url = post
+
+		if url.startswith("http"):
+		    print()
+		    print("processing", title)
+		    print("fetching", url)
+
+		    response = requests.get(url)
+
+		    if response.status_code == 200:
+			print("got OK response")
+			qobj = pq(response.text)
+
+			filename = url.split("/")[-1]
+			slug = filename[:-5]
+
+			try:
+			    html = qobj(".post-body.entry-content").html()
+			    date = qobj("abbr.published").attr("title")
+			    dtime = isodate.parse_datetime(date)
+
+			    with open("htmls/" + filename, "w") as html_out:
+				html_out.write(html)
+
+			    with open("htmls/" + slug + ".meta", "w") as meta_out:
+				meta_out.write(title + "\n")
+				meta_out.write(slug + "\n")
+
+				formatted_date = dtime.strftime("%Y/%m/%d %H:%M")
+				meta_out.write(formatted_date + "\n")
+
+			except Exception as error:
+			    print(error)
+
+			time.sleep(2)
+		    else:
+			print("didn't get OK response", response.status_code)
+
+		else:
+		    print("skipping post", title, "invalid url", url)
+
+lo ponemos en el mismo directorio donde esta el archivo posts y el directorio
+htmls y corremos::
+
+	python3 blogger2nikola.py posts
+
+ahora corremos esto (porque no quiero tocar el código de arriba y no probarlo)::
+
+	cd htmls
+	for i in *.html; do mv $i $(basename $i .html).blogger; done
+
+en el conf.py de python, las lineas importantes:
+
+.. code-block:: python
+
+	# ...
+
+	post_pages = (
+	    ("posts/*.txt", "posts", "post.tmpl", True),
+	    ("posts/*.blogger", "posts", "post.tmpl", True),
+	    ("stories/*.txt", "stories", "story.tmpl", False),
+	)
+
+	# ...
+
+	post_compilers = {
+	    "rest": ('.txt', '.rst'),
+	    "html": ('.blogger',),
+	    "markdown": ('.md', '.mdown', '.markdown')
+	    }
+
+	# ...
+
+movemos lo que tenemos en htmls al directorio posts de nuestro blog nikola y le damos arranque::
+
+	doit
+
+como final con suspenso, vamos a http://disqus.com/admin/tools/import/platform/blogger/
+e iniciamos la migración de comentarios de blogger a disqus (cosa que todavía no termino así que no se si anda)
+
+les dejo el ultimo paso como tarea para la casa, si me acuerdo posteo como me fue con eso.
+
