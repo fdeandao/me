@@ -4,6 +4,14 @@ Scala JMS HornetQ example
 you need hornetq installed and running and the topic "/topic/exampleTopic" must
 be already created.
 
+to create it add the following::
+
+   <queue name="ExpiryQueue">
+      <entry name="/queue/ExpiryQueue"/>
+   </queue>
+
+to config/stand-alone/non-clustered/hornetq-jms.xml
+
 then do::
 
         sbt console
