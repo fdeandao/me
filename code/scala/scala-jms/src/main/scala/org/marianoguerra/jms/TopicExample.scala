@@ -12,9 +12,6 @@ import javax.jms.Topic
 import javax.naming.InitialContext
 
 class TopicExample {
-   def main(args: Array[String]) {
-      new TopicExample().run()
-   }
 
    def getContext(): InitialContext = {
       val props = new Properties()
@@ -92,4 +89,7 @@ class TopicExample {
    }
 }
 
+object TopicExample extends App {
+      new TopicExample().run()
+}
 // vim: set ts=4 sw=4 et:

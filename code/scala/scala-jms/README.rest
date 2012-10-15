@@ -6,9 +6,9 @@ be already created.
 
 to create it add the following::
 
-   <queue name="ExpiryQueue">
-      <entry name="/queue/ExpiryQueue"/>
-   </queue>
+     <queue name="ExpiryQueue">
+        <entry name="/queue/ExpiryQueue"/>
+     </queue>
 
 to config/stand-alone/non-clustered/hornetq-jms.xml
 
@@ -23,4 +23,13 @@ and inside it::
         Consumer 1 Received message: This is a text message
         Consumer 2 Received message: This is a text message
 
+packaging as one jar
+--------------------
 
+run the following command::
+
+    sbt one-jar
+
+and then::
+
+    java -jar target/scala-2.9.2/scala-jms_2.9.2-0.1-one-jar.jar
