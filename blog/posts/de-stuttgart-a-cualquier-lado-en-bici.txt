@@ -1,0 +1,62 @@
+Ayer decidí salir a andar en bici y ver hasta donde llegaba si pedaleaba mucho.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5359.JPG
+	:width: 350pt
+	:align: center
+
+Salí con el plan de seguir el río neckar hacia el sur.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5362.JPG
+	:width: 350pt
+	:align: center
+
+Mis planes cambiaron cuando el neckar hizo una curva y yo seguí por un río
+mas chico.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5364.JPG
+	:width: 350pt
+	:align: center
+
+Ante este cambio de planes vi un cartel que decía tubingen, decidí ir hacia
+allá hasta que ese cartel dejó de aparecer por lo que decidí al menos terminar
+en un lugar con una estación de tren para poder volver a stuttgart.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5368.JPG
+	:width: 350pt
+	:align: center
+
+El camino siguió por pueblos cada vez mas chicos y desprovistos de estaciones
+de trenes* hasta que decidí ver un cartel con un mapa e ir hasta
+un lugar llamado Geislingen que prometía una estación de trenes decente.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5371.JPG
+	:width: 350pt
+	:align: center
+
+Por suerte no hubo mas cambios de planes y logre llegar allí.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5373.JPG
+	:width: 350pt
+	:align: center
+
+	la cleta
+
+El total del viaje fueron aproximadamente 60KM.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5374.JPG
+	:width: 350pt
+	:align: center
+
+	una iglesia de mas de 1000 años
+
+Salí de Stuttgart a eso de las 11:30 y llegué a Gesilingen a las 17:00.
+
+.. figure:: ../galleries/BiciDeStuttgartAGeislingen/IMG_5375.JPG
+	:width: 350pt
+	:align: center
+
+.. raw:: html
+
+        <center><iframe width="600" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr=stuttgart&amp;daddr=geislingen&amp;hl=en&amp;geocode=FfpA6AIdPxqMACnTj63BNNuZRzHkz5F3HMHVeQ%3BFczn5QIdSPyVACklUYwaSguZRzGlQ2zTsi_SmA&amp;aq=&amp;sll=48.588175,9.56823&amp;sspn=0.626784,1.454315&amp;t=w&amp;dirflg=w&amp;mra=ls&amp;ie=UTF8&amp;ll=48.698335,9.503505&amp;spn=0.15385,0.65125&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=d&amp;source=embed&amp;saddr=stuttgart&amp;daddr=geislingen&amp;hl=en&amp;geocode=FfpA6AIdPxqMACnTj63BNNuZRzHkz5F3HMHVeQ%3BFczn5QIdSPyVACklUYwaSguZRzGlQ2zTsi_SmA&amp;aq=&amp;sll=48.588175,9.56823&amp;sspn=0.626784,1.454315&amp;t=w&amp;dirflg=w&amp;mra=ls&amp;ie=UTF8&amp;ll=48.698335,9.503505&amp;spn=0.15385,0.65125" style="color:#0000FF;text-align:left">View Larger Map</a></small></center>
+
+\* si no tenes una estación de tren en Alemania no existís

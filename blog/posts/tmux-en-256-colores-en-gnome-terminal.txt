@@ -1,0 +1,15 @@
+Hace un buen tiempo que esto estaba pendiente, la cosa es que por alguna
+razón tmux no se convence de que gnome-terminal soporta 256 colores.
+
+La solución es esta linea en tmux.conf::
+
+	set-option -g default-terminal "screen-256color"
+
+Y lanzar tmux con la opción -2::
+
+	 Force tmux to assume the terminal supports 256 colours.
+
+Y en mi caso anda (gnome-terminal, tmux, zsh, ubuntu 12.10)
+
+La razón principal de esto es que quería usar algún theme copado para vim, ahora
+a buscar uno :P
