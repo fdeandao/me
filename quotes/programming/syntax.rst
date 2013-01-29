@@ -8,3 +8,10 @@ programming - syntax quotes
         http://www.bitc-lang.org/docs/papers/PLOS2006-shap.html
 
 
+        Syntax is not important...
+
+                * unless you're programming
+                * or writing tools
+
+        -- http://talks.golang.org/2012/splash.slide#34
+
