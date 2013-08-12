@@ -1,6 +1,19 @@
-" show the status line as the second last line
-set laststatus=2
-set statusline=%F%m%r%h%w\ %{&ff}\ %Y\ %04l,%04v\ %p%%\ %L\ %{fugitive#statusline()}
+execute pathogen#infect()
+syntax on
+filetype on
+filetype plugin indent on
+set ttyfast
+set shiftwidth=4
+set tabstop=4
+set expandtab
+" set relativenumber
+highlight BadWhitespace ctermbg=red guibg=red
+match BadWhitespace /\s\+$/
+
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+
 set colorcolumn=79
 
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -29,102 +42,12 @@ cmap w!! w !sudo tee % >/dev/null
 
 " Toggle paste
 set pastetoggle=<F8>
-
-au BufRead,BufNewFile *.py,*pyw,*js,*.json,*.php,*.erl,*.fn,*.ifn,*.yrl,*.xrl set shiftwidth=4
-au BufRead,BufNewFile *.rl,*.c,*.h set shiftwidth=4
-au BufRead,BufNewFile *.scala,*.k set shiftwidth=2
 set backspace=indent,eol,start
 set nonumber
 
-au BufRead,BufNewFile *py,*pyw,*.php,*.c,*.h,*js,*.json,*.erl,*.fn,*.ifn,*.yrl,*.xrl set tabstop=4
-au BufRead,BufNewFile *html,*xul,*htm,*xml,*xhtml,*css set tabstop=1 sw=1 expandtab 
-au BufRead,BufNewFile *.scala,*.k set tabstop=2 sw=2 expandtab 
-au BufRead,BufNewFile *.htc set tabstop=8 sw=8 noexpandtab 
-
-au BufRead,BufNewFile *.fn source ~/.vim/syntax/efene.vim
-au BufRead,BufNewFile *.ifn source ~/.vim/syntax/efene.vim
-au BufRead,BufNewFile *.fn set filetype=efene
-au BufRead,BufNewFile *.ifn set filetype=efene
-au BufRead,BufNewFile *.xul set filetype=xml
-au BufRead,BufNewFile *.rl set filetype=c
-au BufRead,BufNewFile *.k set filetype=scheme
-au BufRead,BufNewFile *.rest set filetype=rst
-au BufRead,BufNewFile *.yrl source /usr/share/vim/vim73/syntax/erlang.vim
-au BufRead,BufNewFile *.xrl source /usr/share/vim/vim73/syntax/erlang.vim
-au BufRead,BufNewFile *.json source /usr/share/vim/vim73/syntax/javascript.vim
-" Replace tabs with the equivalent number of spaces.
-" Also have an autocmd for Makefiles since they require hard tabs.
-" Python: yes
-" C: no
-" Makefile: no
-au BufRead,BufNewFile *.py,*.pyw,*.js,*.json,*.php,*.erl,*.fn,*.ifn,*.yrl,*.xrl set expandtab
-au BufRead,BufNewFile *.rl,*.c,*.h set noexpandtab
-au BufRead,BufNewFile Makefile* set noexpandtab
-
-" Use the below highlight group when displaying bad whitespace is desired
-highlight BadWhitespace ctermbg=red guibg=red
-
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.js,*.json,*.css,*.php,*.erl,*.fn,*.ifn,*.yrl,*.xrl match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.rl,*.py,*.pyw,*.c,*.h,*.js,*.json,*.css,*.php,*.erl,*.fn,*.ifn,*.yrl,*.xrl match BadWhitespace /\s\+$/
-
-" Wrap text after a certain number of characters
-" Python: 79 
-" C: 79
-au BufRead,BufNewFile *.rl,*.py,*.pyw,*.c,*.h,*.php,*.erl,*.fn,*.ifn,*.yrl,*.xrl set textwidth=79
-
-augroup golang
-  au!
-  au BufRead,BufNewFile *.go set filetype=go
-  au FileType go set noexpandtab
-  au FileType go set smartindent
-  au FileType go set equalprg=gofmt
-augroup END
-
-" Turn off settings in 'formatoptions' relating to comment formatting.
-" - c : do not automatically insert the comment leader when wrapping based on
-"    'textwidth'
-" - o : do not insert the comment leader when using 'o' or 'O' from command mode
-" - r : do not insert the comment leader when hitting <Enter> in insert mode
-" Python: not needed
-" C: prevents insertion of '*' at the beginning of every line in a comment
-au BufRead,BufNewFile *.rl,*.c,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
-
-" Use UNIX (\n) line endings.
-" Only used for new files so as to not force existing files to change their
-" line endings.
-" Python: yes
-" C: yes
-au BufNewFile *.py,*.pyw,*.rl,*.c,*.h,*.erl,*.php,*.html,*.css,*.fn,*.ifn,*.yrl,*.xrl set fileformat=unix
-
-
-" ----------------------------------------------------------------------------
-" The following section contains suggested settings.  While in no way required
-" to meet coding standards, they are helpful.
-
-" Set the default file encoding to UTF-8: ``set encoding=utf-8``
-
-" Puts a marker at the beginning of the file to differentiate between UTF and
-" UCS encoding (WARNING: can trick shells into thinking a text file is actually
-" a binary file when executing the text file): ``set bomb``
-
-" For full syntax highlighting:
-let python_highlight_all=1
-syntax on
-
 " Automatically indent based on file type: 
-filetype indent on
-filetype on            " enables filetype detection
-filetype plugin on     " enables filetype specific plugins
 " Keep indentation level from previous line: 
 set autoindent
-
-" Folding based on indentation: 
-" set foldmethod=indent
-
-" -----------------------------------------------------------------------------
-" otra config
 
 " shows the match while typing
 set incsearch
@@ -158,32 +81,40 @@ set hlsearch
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 2
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.pyc,*.class,*.beam,*.o,*/efabric/target/*,*/project/target/*,*/.eunit
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.pyc,*.class,*.beam,*.o,*/target,*/project/target/*,*/.eunit
 
 set wildmode=list:longest
-"set relativenumber
 
-call pathogen#infect()
+let g:syntastic_python_checkers=['pylint']
+let g:syntastic_js_checkers=['jshint']
 
-set ttyfast
+let g:slime_target = "tmux"
 
-let g:syntastic_python_checker = 'pylint'
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+"\ ['black',       'SeaGreen3'],
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
 
-let g:notmuch_signature = ['']
-let g:notmuch_sendmail = '/usr/bin/esmtp'
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
 
-syntax enable
-
-let g:jsbeautify = {'indent_size': 4, 'indent_char': ' '}
-let g:htmlbeautify = {'indent_size': 2, 'indent_char': ' ', 'max_char': 78, 'brace_style': 'expand', 'unformatted': ['a', 'sub', 'sup', 'b', 'i', 'u']}
-let g:cssbeautify = {'indent_size': 2, 'indent_char': ' '}
-let g:jsbeautify_engine = "node"
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+colorscheme fisa

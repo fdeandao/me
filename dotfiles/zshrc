@@ -14,8 +14,11 @@ ZSH_THEME="robbyrussell"
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
-# Comment this out to disable weekly auto-update checks
+# Comment this out to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -23,22 +26,31 @@ ZSH_THEME="robbyrussell"
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
+# Uncomment following line if you want to disable command autocorrection
+# DISABLE_CORRECTION="true"
+
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian github python)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+unalias gcl
 # Customize to your needs...
-export PATH=$PATH:$HOME/bin
-
-export EDITOR="vim"
-export PYTHONSTARTUP=$HOME/src/me/dotfiles/pythonstartup
-
-alias gpur="git pull --rebase origin \$(current_branch)"
-alias gl="nocorrect git log"
-alias scpresume="rsync --partial --progress --rsh=ssh"
+export EDITOR=vim
+export CLOJURESCRIPT_HOME=$HOME/soft/clojurescript
+export GOROOT=$HOME/soft/go
+export LC_ALL="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+alias ack='ack-grep'
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:$HOME/bin:$HOME/bin/sbt/bin:$CLOJURESCRIPT_HOME/bin
+export PATH=$PATH:$GOROOT/bin:$HOME/soft/dart/dart-sdk/bin:$HOME/soft/pypy-2.0.2/bin:$HOME/soft/depot_tools
