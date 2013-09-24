@@ -7,16 +7,40 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+-- Load Debian menu entries
+require("debian.menu")
+
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
+
+-- Handle runtime errors after startup
+do
+    local in_error = false
+    awesome.add_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
+
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "Oops, an error happened!",
+                         text = err })
+        in_error = false
+    end)
+end
+-- }}}
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/mariano/src/me/awesome.theme.lua")
+beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal -e \"tmux\""
-browser = "firefox"
-filebrowser = "nautilus --no-desktop"
-halt = "gksu halt"
-im = terminal .. " -e ~/src/emesene/emesene/emesene"
+terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -31,6 +55,7 @@ modkey = "Mod4"
 layouts =
 {
     awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -39,9 +64,8 @@ layouts =
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
     awful.layout.suit.floating,
+    awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -50,7 +74,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[2])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -58,18 +82,14 @@ end
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
+   { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = {
-                                    { "terminal", terminal },
-                                    { "browser", browser },
-                                    { "files", filebrowser },
-                                    { "im", instantmessenger },
-                                    { "halt", halt },
-	                            { "awesome", myawesomemenu, beautiful.awesome_icon }
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "Debian", debian.menu.Debian_menu.Debian },
+                                    { "open terminal", terminal }
                                   }
                         })
 
@@ -209,11 +229,10 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "b", function () awful.util.spawn(browser) end),
-    awful.key({ modkey,           }, "f", function () awful.util.spawn(filebrowser) end),
-    awful.key({ modkey,           }, "t", function () awful.util.spawn("mpc toggle") end),
-    awful.key({ modkey,           }, ".", function () awful.util.spawn("mpc next") end),
-    awful.key({ modkey,           }, ",", function () awful.util.spawn("mpc prev") end),
+    awful.key({ modkey,           }, "b", function () awful.util.spawn("firefox") end),
+    awful.key({ modkey,  "Shift"  }, "b", function () awful.util.spawn("chromium-browser") end),
+    awful.key({ modkey,           }, "h", function () awful.util.spawn("hotot") end),
+    awful.key({ modkey,           }, "f", function () awful.util.spawn("nautilus") end),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
@@ -224,13 +243,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "r", function () awful.layout.inc(layouts,  1) end),
+    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "space",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
@@ -242,7 +261,7 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ modkey, "Shift"   }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
@@ -321,6 +340,8 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
+    { rule = { class = "pinentry" },
+      properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
@@ -360,10 +381,4 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.util.spawn("xmodmap ~/.Xmodmap")
-awful.util.spawn_with_shell("gnome-settings-daemon")
-awful.util.spawn_with_shell("nm-applet")
-awful.util.spawn_with_shell("gnome-power-manager")
-awful.util.spawn_with_shell("gnome-volume-manager")
-awful.util.spawn_with_shell("conky")
-
+awful.util.spawn_with_shell("gnome-session")
