@@ -1,0 +1,46 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/08/12 16:49:45
+.. title: Install Immutant 1.0 full as a service on debian/ubuntu
+.. slug: install-immutant-10-full-as-a-service-on-debianubuntu
+
+
+Small dump with instructions to install immutant as a service on debian,
+ubuntu or derivatives.
+
+I adapted the init script that comes with immutant to work on debian::
+
+    # install needed packages
+    sudo apt-get install wget unzip openjdk-7-jdk daemon
+
+    # create a dir to download files
+    mkdir ~/soft
+    cd ~/soft
+
+    # download immutant 1.0 full
+    wget http://repository-projectodd.forge.cloudbees.com/release/org/immutant/immutant-dist/1.0.0/immutant-dist-1.0.0-full.zip
+
+    unzip immutant-dist-1.0.0-full.zip
+
+    # create user that will run the service
+    sudo adduser jboss-as
+
+    # create required folders
+    sudo cp -r immutant-1.0.0-full/jboss /usr/share/jboss-as/
+    sudo mkdir -p /var/log/jboss-as /var/run/jboss-as/
+
+    # set permissions
+    sudo chown -R jboss-as.jboss-as /var/log/jboss-as /var/run/jboss-as /usr/share/jboss-as/
+
+    # get and install init.d script
+    sudo wget https://gist.github.com/marianoguerra/6211268/raw/6e248a66670f0ef247d9aa169873c011b275da86/jboss-as-standalone.sh -O /etc/init.d/jboss-as-standalone
+    sudo chmod u+x /etc/init.d/jboss-as-standalone
+
+    # register the service
+    update-rc.d jboss-as-standalone default
+
+    # start it
+    sudo /etc/init.d/jboss-as-standalone start
+
+
